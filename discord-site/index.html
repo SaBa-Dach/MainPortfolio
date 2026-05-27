@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inbo Dev Hub — Premium Discord Community</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <a href="../index.html" class="back-to-portfolio" id="backBtn">
+        <i class="fas fa-arrow-left"></i> Return to Portfolio
+    </a>
+
+    <div class="glow-bg"></div>
+    <div class="glow-bg-2"></div>
+    <div class="grid-overlay"></div>
+
+    <div class="card-container">
+        <header class="header">
+            <div class="server-logo">
+                <div class="logo-inner">
+                    <img src="../assets/discord_logo.png" alt="Inbo Dev Hub Logo">
+                </div>
+                <span class="status-badge"><span class="pulse"></span> LIVE</span>
+            </div>
+            <h1 class="server-title">Inbo Dev Hub</h1>
+            <p class="server-tagline">Where premium developers unite. Level up your game dev, Lua scripting, and web systems with professional support.</p>
+        </header>
+
+        <section class="stats">
+            <div class="stat-item">
+                <span class="stat-number">1.2k+</span>
+                <span class="stat-label">Developers</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">340+</span>
+                <span class="stat-label">Online Now</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">15+</span>
+                <span class="stat-label">Server Boosts</span>
+            </div>
+        </section>
+
+        <section class="members-mockup">
+            <div class="section-subtitle">Active Community Members</div>
+            <div class="avatars-row">
+                <div class="avatar online" style="background: #4f46e5;"><i class="fas fa-code"></i><span class="tooltip">inbo_scripts (Admin)</span></div>
+                <div class="avatar online" style="background: #0ea5e9;"><i class="fas fa-gamepad"></i><span class="tooltip">XenonDev</span></div>
+                <div class="avatar online" style="background: #10b981;"><i class="fas fa-palette"></i><span class="tooltip">PixelArtist</span></div>
+                <div class="avatar online" style="background: #f59e0b;"><i class="fas fa-terminal"></i><span class="tooltip">LuaGod</span></div>
+                <div class="avatar online" style="background: #ec4899;"><i class="fas fa-shield-halved"></i><span class="tooltip">ModTeam</span></div>
+                <div class="avatar-more">+335</div>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-brackets-curly"></i></div>
+                <div class="feature-info">
+                    <h3>Scripting Hub</h3>
+                    <p>Access high-quality open source Lua modules, custom web layouts, and debugging systems.</p>
+                </div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-cubes"></i></div>
+                <div class="feature-info">
+                    <h3>Marketplace</h3>
+                    <p>Buy, sell, or request high-end custom assets, scripting commission systems, and maps safely.</p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="action-footer">
+            <a href="https://discord.com/users/1481990642174263462" target="_blank" class="join-btn">
+                <i class="fab fa-discord"></i> Join Inbo Dev Hub
+            </a>
+        </footer>
+    </div>
+
+    <script>
+        if (window.self !== window.top) {
+            document.getElementById('backBtn').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

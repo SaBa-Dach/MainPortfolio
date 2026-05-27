@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nova — Keyboard-First Task Manager</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <a href="../index.html" class="back-to-portfolio" id="backBtn">
+        <i class="fas fa-arrow-left"></i> Return to Portfolio
+    </a>
+
+    <div class="circle-glow"></div>
+    <div class="circle-glow-2"></div>
+
+    <nav class="navbar">
+        <div class="logo">
+            <img src="../assets/nova_logo.png" alt="Nova Logo" class="logo-img">
+            Nova
+        </div>
+        <ul class="nav-links">
+            <li><a href="#features">Features</a></li>
+            <li><a href="#demo">Preview</a></li>
+        </ul>
+        <a href="#" class="btn-nav">Get Nova Free</a>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-tag">✦ Productivity Redefined</div>
+        <h1>Focus on what <span class="gradient-text">matters</span>.</h1>
+        <p class="hero-subtitle">Nova is a lightweight, keyboard-first task manager that removes visual noise so you can design, code, and build without distractions.</p>
+        <div class="cta-group">
+            <a href="#" class="btn btn-primary">Download App <i class="fas fa-arrow-right"></i></a>
+            <a href="#demo" class="btn btn-secondary"><i class="fas fa-play"></i> Watch Preview</a>
+        </div>
+
+        <!-- CSS Mockup representing a premium app screenshot -->
+        <div class="app-mockup" id="demo">
+            <div class="mockup-header">
+                <div class="circles">
+                    <span class="dot-win close"></span>
+                    <span class="dot-win minimize"></span>
+                    <span class="dot-win maximize"></span>
+                </div>
+                <div class="mockup-tab">⌘ K Search Tasks...</div>
+            </div>
+            <div class="mockup-body">
+                <div class="task-item active">
+                    <span class="checkbox check-done"><i class="fas fa-check"></i></span>
+                    <span class="task-title">Design web portfolio mockup UI/UX</span>
+                    <span class="task-tag tag-purple">Design</span>
+                </div>
+                <div class="task-item">
+                    <span class="checkbox"></span>
+                    <span class="task-title">Optimize loading speed of iframe thumbnails</span>
+                    <span class="task-tag tag-blue">Code</span>
+                </div>
+                <div class="task-item">
+                    <span class="checkbox"></span>
+                    <span class="task-title">Integrate Discord webhook invite logs</span>
+                    <span class="task-tag tag-green">Integration</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="features" class="features">
+        <div class="feature-card">
+            <div class="icon-wrap"><i class="fas fa-bolt"></i></div>
+            <h3>50ms Latency</h3>
+            <p>Built with pure optimized code. Zero bloat. Fast command execution.</p>
+        </div>
+        <div class="feature-card">
+            <div class="icon-wrap"><i class="fas fa-keyboard"></i></div>
+            <h3>Keyboard-First</h3>
+            <p>Keep your hands on the keyboard. Instantly navigate using shortcuts.</p>
+        </div>
+        <div class="feature-card">
+            <div class="icon-wrap"><i class="fas fa-vault"></i></div>
+            <h3>Local-First</h3>
+            <p>Your tasks are yours. Sync to the cloud securely with end-to-end encryption.</p>
+        </div>
+    </section>
+
+    <script>
+        if (window.self !== window.top) {
+            document.getElementById('backBtn').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

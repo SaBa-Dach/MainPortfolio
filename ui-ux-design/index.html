@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus UI Dashboard — High Fidelity UI/UX Showcase</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <a href="../index.html" class="back-to-portfolio" id="backBtn">
+        <i class="fas fa-arrow-left"></i> Return to Portfolio
+    </a>
+
+    <div class="dashboard-wrap">
+        <aside class="sidebar">
+            <div class="side-logo">
+                <img src="../assets/nexus_dash_logo.png" alt="Nexus Logo" class="logo-img">
+                <span>Nexus</span>
+            </div>
+            <nav class="side-nav">
+                <a href="#" class="nav-item active"><i class="fas fa-chart-pie"></i> Overview</a>
+                <a href="#" class="nav-item"><i class="fas fa-wallet"></i> Wallet</a>
+                <a href="#" class="nav-item"><i class="fas fa-arrow-trend-up"></i> Analytics</a>
+                <a href="#" class="nav-item"><i class="fas fa-gear"></i> Settings</a>
+            </nav>
+            <div class="user-profile">
+                <div class="user-avatar">
+                    <img src="../assets/portfolio_logo.png" alt="User Avatar" class="avatar-img">
+                </div>
+                <div class="user-meta">
+                    <span class="user-name">inbo_scripts</span>
+                    <span class="user-role">Administrator</span>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="dash-header">
+                <div>
+                    <h2>Performance Hub</h2>
+                    <p>Real-time analytics and tracking systems</p>
+                </div>
+                <div class="header-actions">
+                    <button class="btn-icon"><i class="fas fa-bell"></i><span class="notification-dot"></span></button>
+                    <button class="btn-create">+ New Project</button>
+                </div>
+            </header>
+
+            <section class="grid-stats">
+                <div class="stat-card">
+                    <div class="card-top">
+                        <span>Total Revenue</span>
+                        <i class="fas fa-dollar-sign text-blue"></i>
+                    </div>
+                    <div class="val">$14,235.40</div>
+                    <span class="trend positive"><i class="fas fa-arrow-trend-up"></i> +12.3% this month</span>
+                </div>
+                <div class="stat-card">
+                    <div class="card-top">
+                        <span>Active Users</span>
+                        <i class="fas fa-users text-purple"></i>
+                    </div>
+                    <div class="val">8,943</div>
+                    <span class="trend positive"><i class="fas fa-arrow-trend-up"></i> +8.1% this week</span>
+                </div>
+                <div class="stat-card">
+                    <div class="card-top">
+                        <span>Conversion Rate</span>
+                        <i class="fas fa-chart-line text-cyan"></i>
+                    </div>
+                    <div class="val">2.84%</div>
+                    <span class="trend negative"><i class="fas fa-arrow-trend-down"></i> -0.4% today</span>
+                </div>
+            </section>
+
+            <section class="grid-visuals">
+                <div class="visual-card chart-card">
+                    <h3>Revenue Breakdown</h3>
+                    <div class="chart-container">
+                        <div class="bar-chart">
+                            <div class="bar-col"><div class="bar-fill animate-bar" style="--height: 40%"></div><span>Jan</span></div>
+                            <div class="bar-col"><div class="bar-fill animate-bar" style="--height: 60%"></div><span>Feb</span></div>
+                            <div class="bar-col"><div class="bar-fill animate-bar" style="--height: 85%"></div><span>Mar</span></div>
+                            <div class="bar-col"><div class="bar-fill animate-bar" style="--height: 50%"></div><span>Apr</span></div>
+                            <div class="bar-col"><div class="bar-fill animate-bar" style="--height: 75%"></div><span>May</span></div>
+                            <div class="bar-col"><div class="bar-fill animate-bar" style="--height: 95%"></div><span>Jun</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="visual-card circle-card">
+                    <h3>Storage Usage</h3>
+                    <div class="circle-wrap">
+                        <div class="circle-radial">
+                            <div class="circle-inner">78%</div>
+                        </div>
+                        <div class="circle-legend">
+                            <p><span class="dot-indicator blue"></span> Game Data (45GB)</p>
+                            <p><span class="dot-indicator purple"></span> Assets (30GB)</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        if (window.self !== window.top) {
+            document.getElementById('backBtn').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

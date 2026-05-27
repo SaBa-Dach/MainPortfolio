@@ -4,33 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Professional Roblox & Web Developer — Custom game systems, UI design, and modern landing pages built with precision.">
-    <title>inbo — Roblox & Web Developer</title>
+    <title>inbodev.netlify.app — Roblox & Web Developer</title>
     <link rel="icon" type="image/png" href="assets/portfolio_logo.png">
     <link rel="stylesheet" href="styles.css">
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-    <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <a href="#home" class="logo">
                 <img src="assets/portfolio_logo.png" alt="Dev Logo">
-                inbo<span class="accent">.</span>dev
+                inbodev<span class="accent">.</span>netlify.app
             </a>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#roblox">Roblox</a></li>
-                <li><a href="#webdev">Web Dev</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#pricing">Pricing</a></li>
-                <li><a href="#contact" class="btn-nav">Contact</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#roblox">Roblox</a></li>
+        <li><a href="#webdev">Web Dev</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#why-me">Why Me</a></li>
+        <li><a href="#contact" class="btn-nav">Contact</a></li>
             </ul>
             <div class="hamburger" id="hamburger">
                 <i class="fas fa-bars"></i>
@@ -38,7 +36,6 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section id="home" class="hero">
         <canvas id="particles-canvas"></canvas>
         <div class="hero-grid-pattern"></div>
@@ -67,7 +64,6 @@
         </div>
     </section>
 
-    <!-- About Section -->
     <section id="about" class="section">
         <div class="container">
             <h2 class="section-title reveal">About <span class="gradient-text">Me</span></h2>
@@ -80,7 +76,9 @@
         </div>
     </section>
 
-    <!-- Roblox Development Section -->
+
+
+
     <section id="roblox" class="section alt-bg">
         <div class="container">
             <h2 class="section-title reveal">Roblox <span class="gradient-text">Development</span></h2>
@@ -110,7 +108,6 @@
         </div>
     </section>
 
-    <!-- Web Development Section -->
     <section id="webdev" class="section">
         <div class="container">
             <h2 class="section-title reveal">Web <span class="gradient-text">Development</span></h2>
@@ -132,12 +129,12 @@
                     <p>Professional online portfolios to help developers and artists display their best work.</p>
                 </div>
                 <div class="card reveal">
-                    <div class="card-icon"><i class="fas fa-laptop-code"></i></div>
+
                     <h3>Simple HTML/CSS/JS</h3>
                     <p>Fast, lightweight, and fully responsive static websites without the bloat of frameworks.</p>
                 </div>
                 <div class="card reveal">
-                    <div class="card-icon"><i class="fas fa-pen-nib"></i></div>
+
                     <h3>UI/UX Design</h3>
                     <p>Modern, user-centric interface design ensuring a seamless experience across all devices.</p>
                 </div>
@@ -145,151 +142,313 @@
         </div>
     </section>
 
-    <!-- Projects Section -->
     <section id="projects" class="section alt-bg">
         <div class="container">
-            <h2 class="section-title reveal">Selected <span class="gradient-text">Projects</span></h2>
-            <p class="section-subtitle reveal">A showcase of my recent work and live demos.</p>
-            <div class="projects-grid stagger-children">
-                <!-- Roblox Portfolio Spotlight -->
-                <div class="project-card featured-project reveal">
-                    <div class="img-wrapper">
-                        <img src="assets/ib_logo.png" alt="Roblox Portfolio" class="project-img">
-                        <span class="featured-badge"><i class="fas fa-star"></i> Featured</span>
-                        <div class="img-overlay"></div>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-tags">
-                            <span class="tag">Roblox</span>
-                            <span class="tag">Lua</span>
-                            <span class="tag">Systems</span>
+
+            <div class="projects-eyebrow reveal" style="text-align:center;margin-bottom:2.5rem">
+                <div style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.4rem 1rem;background:rgba(99,102,241,0.07);border:1px solid rgba(99,102,241,0.2);border-radius:50px;font-size:0.78rem;color:var(--accent-3);letter-spacing:0.08em;text-transform:uppercase;font-weight:600;margin-bottom:1.2rem">
+                    ✦ Portfolio Showcase
+                </div>
+                <h2 class="section-title reveal">Selected <span class="gradient-text">Projects</span></h2>
+                <p class="section-subtitle reveal" style="margin-bottom:0">Here are some of my recent web design and frontend projects.</p>
+            </div>
+
+            <div class="project-filters reveal" style="display:flex;justify-content:center;gap:0.5rem;margin-bottom:3rem;flex-wrap:wrap">
+                <button class="proj-filter active" data-filter="all">All Projects</button>
+                <button class="proj-filter" data-filter="landing">Landing Pages</button>
+                <button class="proj-filter" data-filter="ui-apps">Web Apps / UI Projects</button>
+                <button class="proj-filter" data-filter="other-sites">Other Websites</button>
+            </div>
+
+            <div class="projects-grid-new stagger-children" id="projectsGrid">
+
+                <!-- Project 1: Valor Gaming Theme -->
+                <div class="proj-card-new featured reveal" data-cat="landing">
+                    <div class="proj-thumb gaming-thumb">
+                        <div class="mockup-frame-wrap">
+                            <div class="mockup-bar-top">
+                                <div class="dot r"></div>
+                                <div class="dot y"></div>
+                                <div class="dot g"></div>
+                                <div class="mockup-url"></div>
+                            </div>
+                            <div class="iframe-scaler">
+                                <iframe src="landing2/index.html" scrolling="no" tabindex="-1"></iframe>
+                            </div>
                         </div>
-                        <h3>My Roblox Portfolio</h3>
-                        <p>A comprehensive showcase of my past Roblox development work — combat systems, UI, game mechanics, and more.</p>
-                        <a href="https://saba-dach.github.io/Portfolio/" target="_blank" class="btn btn-outline"><i class="fas fa-external-link-alt"></i> View Portfolio</a>
+                        
+                    </div>
+                    <div class="proj-body-new">
+                        <div class="proj-meta">Client Project · Landing Page</div>
+                        <div class="proj-tags-new">
+                            <span class="ptag html">HTML</span>
+                            <span class="ptag css">CSS</span>
+                            <span class="ptag js">JS</span>
+                        </div>
+                        <h3 class="proj-title-new"><img src="assets/valor_logo.png" alt="Valor Logo" style="height: 20px; width: 20px; border-radius: 4px; vertical-align: middle; margin-right: 8px; border: 1px solid rgba(255,255,255,0.1)">Landing Page #1 – Gaming Theme</h3>
+                        <p class="proj-desc-new">Immersive high-converting promotional website built for a multiplayer battle arena game.</p>
+                        <div class="proj-divider"></div>
+                        <div class="proj-actions-new">
+                            <a href="landing2/index.html" target="_blank" class="btn-demo">↗ Live Demo</a>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Elevate Agency -->
-                <div class="project-card reveal">
-                    <div class="img-wrapper">
-                        <img src="assets/elevate_logo.png" alt="Elevate Agency" class="project-img">
-                        <div class="img-overlay"></div>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-tags">
-                            <span class="tag">HTML/CSS</span>
-                            <span class="tag">Landing Page</span>
+                <!-- Project 2: Elevate SaaS Theme -->
+                <div class="proj-card-new featured reveal" data-cat="landing">
+                    <div class="proj-thumb saas-thumb">
+                        <div class="mockup-frame-wrap">
+                            <div class="mockup-bar-top">
+                                <div class="dot r"></div>
+                                <div class="dot y"></div>
+                                <div class="dot g"></div>
+                                <div class="mockup-url"></div>
+                            </div>
+                            <div class="iframe-scaler">
+                                <iframe src="landing1/index.html" scrolling="no" tabindex="-1"></iframe>
+                            </div>
                         </div>
-                        <h3>Elevate Digital Agency</h3>
-                        <p>A sleek, modern landing page designed for a creative digital agency with high-conversion layout and CTAs.</p>
-                        <a href="landing1/index.html" target="_blank" class="btn btn-outline"><i class="fas fa-eye"></i> Live Demo</a>
+                        
+                    </div>
+                    <div class="proj-body-new">
+                        <div class="proj-meta">Client Project · Landing Page</div>
+                        <div class="proj-tags-new">
+                            <span class="ptag html">HTML</span>
+                            <span class="ptag css">CSS</span>
+                            <span class="ptag js">JS</span>
+                        </div>
+                        <h3 class="proj-title-new"><img src="assets/elevate_logo.png" alt="Elevate Logo" style="height: 20px; width: 20px; border-radius: 4px; vertical-align: middle; margin-right: 8px; border: 1px solid rgba(255,255,255,0.1)">Landing Page #2 – Modern SaaS Style</h3>
+                        <p class="proj-desc-new">High-end corporate agency presentation page designed to capture inbound enterprise leads.</p>
+                        <div class="proj-divider"></div>
+                        <div class="proj-actions-new">
+                            <a href="landing1/index.html" target="_blank" class="btn-demo">↗ Live Demo</a>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Valor Game -->
-                <div class="project-card reveal">
-                    <div class="img-wrapper">
-                        <img src="assets/valor_logo.png" alt="Valor Game" class="project-img">
-                        <div class="img-overlay"></div>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-tags">
-                            <span class="tag">Game</span>
-                            <span class="tag">Dark Theme</span>
-                            <span class="tag">Immersive</span>
+                <!-- Project 3: Discord Server Site -->
+                <div class="proj-card-new reveal" data-cat="landing">
+                    <div class="proj-thumb discord-thumb">
+                        <div class="mockup-frame-wrap">
+                            <div class="mockup-bar-top">
+                                <div class="dot r"></div>
+                                <div class="dot y"></div>
+                                <div class="dot g"></div>
+                                <div class="mockup-url"></div>
+                            </div>
+                            <div class="iframe-scaler">
+                                <iframe src="discord-site/index.html" scrolling="no" tabindex="-1"></iframe>
+                            </div>
                         </div>
-                        <h3>Valor Game Landing Page</h3>
-                        <p>An immersive, dark-themed promotional landing page for a multiplayer game with bold aesthetics.</p>
-                        <a href="landing2/index.html" target="_blank" class="btn btn-outline"><i class="fas fa-eye"></i> Live Demo</a>
+                    </div>
+                    <div class="proj-body-new">
+                        <div class="proj-meta">Community · Discord Server Site</div>
+                        <div class="proj-tags-new">
+                            <span class="ptag html">HTML</span>
+                            <span class="ptag css">CSS</span>
+                            <span class="ptag discord-tag">Discord</span>
+                        </div>
+                        <h3 class="proj-title-new"><img src="assets/discord_logo.png" alt="Discord Logo" style="height: 20px; width: 20px; border-radius: 4px; vertical-align: middle; margin-right: 8px; border: 1px solid rgba(255,255,255,0.1)">Inbo Dev Hub Landing Page</h3>
+                        <p class="proj-desc-new">Interactive landing page featuring real-time server statistics and automated discord link sync.</p>
+                        <div class="proj-divider"></div>
+                        <div class="proj-actions-new">
+                            <a href="discord-site/index.html" target="_blank" class="btn-demo">↗ Live Demo</a>
+                        </div>
                     </div>
                 </div>
+
+                <!-- Project 4: Nova Task Manager -->
+                <div class="proj-card-new reveal" data-cat="ui-apps">
+                    <div class="proj-thumb html-thumb">
+                        <div class="mockup-frame-wrap">
+                            <div class="mockup-bar-top">
+                                <div class="dot r"></div>
+                                <div class="dot y"></div>
+                                <div class="dot g"></div>
+                                <div class="mockup-url"></div>
+                            </div>
+                            <div class="iframe-scaler">
+                                <iframe src="simple-html-css/index.html" scrolling="no" tabindex="-1"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="proj-body-new">
+                        <div class="proj-meta">Productivity · Web App</div>
+                        <div class="proj-tags-new">
+                            <span class="ptag html">HTML</span>
+                            <span class="ptag css">CSS</span>
+                            <span class="ptag js">JS</span>
+                        </div>
+                        <h3 class="proj-title-new"><img src="assets/nova_logo.png" alt="Nova Logo" style="height: 20px; width: 20px; border-radius: 4px; vertical-align: middle; margin-right: 8px; border: 1px solid rgba(255,255,255,0.1)">Nova Task Manager Promo</h3>
+                        <p class="proj-desc-new">Modern, keyboard-driven productivity utility with real-time UI/UX task list states.</p>
+                        <div class="proj-divider"></div>
+                        <div class="proj-actions-new">
+                            <a href="simple-html-css/index.html" target="_blank" class="btn-demo">↗ Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5: Nexus UI Dashboard -->
+                <div class="proj-card-new reveal" data-cat="ui-apps">
+                    <div class="proj-thumb uiux-thumb">
+                        <div class="mockup-frame-wrap">
+                            <div class="mockup-bar-top">
+                                <div class="dot r"></div>
+                                <div class="dot y"></div>
+                                <div class="dot g"></div>
+                                <div class="mockup-url"></div>
+                            </div>
+                            <div class="iframe-scaler">
+                                <iframe src="ui-ux-design/index.html" scrolling="no" tabindex="-1"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="proj-body-new">
+                        <div class="proj-meta">Dashboard · UI/UX Design</div>
+                        <div class="proj-tags-new">
+                            <span class="ptag html">HTML</span>
+                            <span class="ptag css">CSS</span>
+                            <span class="ptag js">JS</span>
+                        </div>
+                        <h3 class="proj-title-new"><img src="assets/nexus_dash_logo.png" alt="Nexus Logo" style="height: 20px; width: 20px; border-radius: 4px; vertical-align: middle; margin-right: 8px; border: 1px solid rgba(255,255,255,0.1)">Nexus Analytics Dashboard</h3>
+                        <p class="proj-desc-new">Creative dark-mode analytics console showcasing real-time responsive visualization metrics.</p>
+                        <div class="proj-divider"></div>
+                        <div class="proj-actions-new">
+                            <a href="ui-ux-design/index.html" target="_blank" class="btn-demo">↗ Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6: Roblox Developer Portfolio -->
+                <div class="proj-card-new reveal" data-cat="other-sites">
+                    <div class="proj-thumb roblox-thumb">
+                        <div class="mockup-frame-wrap">
+                            <div class="mockup-bar-top">
+                                <div class="dot r"></div>
+                                <div class="dot y"></div>
+                                <div class="dot g"></div>
+                                <div class="mockup-url"></div>
+                            </div>
+                            <div class="iframe-scaler">
+                                <iframe src="https://saba-dach.github.io/Portfolio/" scrolling="no" tabindex="-1"></iframe>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="proj-body-new">
+                        <div class="proj-meta">Portfolio · Roblox Dev</div>
+                        <div class="proj-tags-new">
+                            <span class="ptag html">HTML</span>
+                            <span class="ptag css">CSS</span>
+                            <span class="ptag js">JS</span>
+                        </div>
+                        <h3 class="proj-title-new"><img src="assets/portfolio_logo.png" alt="Dev Logo" style="height: 20px; width: 20px; border-radius: 4px; vertical-align: middle; margin-right: 8px; border: 1px solid rgba(255,255,255,0.1)">Roblox Developer Portfolio</h3>
+                        <p class="proj-desc-new">Full interactive developer portfolio highlighting game combat systems and Lua scripts.</p>
+                        <div class="proj-divider"></div>
+                        <div class="proj-actions-new">
+                            <a href="https://saba-dach.github.io/Portfolio/" target="_blank" class="btn-demo">↗ Live Demo</a>
+
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
 
-<section id="pricing" class="section">
-    <div class="container">
-        <h2 class="section-title reveal">Services & <span class="gradient-text">Pricing</span></h2>
-        <p class="section-subtitle reveal">Transparent pricing — no hidden fees, no surprises.</p>
+    <section id="pricing" class="section">
+        <div class="container">
+            <h2 class="section-title reveal">Services & <span class="gradient-text">Pricing</span></h2>
+            <p class="section-subtitle reveal">Transparent pricing — no hidden fees, no surprises.</p>
 
-        <div class="pricing-grid stagger-children">
+            <div class="pricing-grid stagger-children">
 
-            <div class="price-card reveal">
-                <div class="price-icon-wrap"><i class="fas fa-bug"></i></div>
-                <h3>Bug Fixes</h3>
-                <div class="price">
-                    <small>Starting at</small>
-                    <span>$10</span>
-                    <small class="price-unit">per fix</small>
+                <div class="price-card reveal">
+                    <div class="price-icon-wrap"><i class="fas fa-bug"></i></div>
+                    <h3>Bug Fixes</h3>
+                    <div class="price">
+                        <small>Starting at</small>
+                        <span>$10</span>
+                        <small class="price-unit">per fix</small>
+                    </div>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Script diagnosis</li>
+                        <li><i class="fas fa-check"></i> Quick turnaround</li>
+                        <li><i class="fas fa-check"></i> Minor adjustments</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-secondary btn-block price-cta">Get Started</a>
                 </div>
-                <ul>
-                    <li><i class="fas fa-check"></i> Script diagnosis</li>
-                    <li><i class="fas fa-check"></i> Quick turnaround</li>
-                    <li><i class="fas fa-check"></i> Minor adjustments</li>
-                </ul>
-                <a href="#contact" class="btn btn-secondary btn-block price-cta">Get Started</a>
+
+                <div class="price-card popular reveal">
+                    <div class="badge">Most Popular</div>
+                    <div class="price-icon-wrap popular-icon"><i class="fas fa-cogs"></i></div>
+                    <h3>Small Systems</h3>
+                    <div class="price">
+                        <span>$20 – $50</span>
+                        <small class="price-unit">per system</small>
+                    </div>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Custom mechanics</li>
+                        <li><i class="fas fa-check"></i> UI integration</li>
+                        <li><i class="fas fa-check"></i> Combat / inventory</li>
+                        <li><i class="fas fa-check"></i> Revisions included</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary btn-block price-cta">Get Started</a>
+                </div>
+
+                <div class="price-card reveal">
+                    <div class="price-icon-wrap"><i class="fas fa-rocket"></i></div>
+                    <h3>Landing Pages</h3>
+                    <div class="price">
+                        <span>$40 – $100</span>
+                        <small class="price-unit">per page</small>
+                    </div>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Modern design</li>
+                        <li><i class="fas fa-check"></i> Fully responsive</li>
+                        <li><i class="fas fa-check"></i> SEO friendly</li>
+                        <li><i class="fas fa-check"></i> Fast delivery</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-secondary btn-block price-cta">Get Started</a>
+                </div>
+
+                <div class="price-card reveal">
+                    <div class="price-icon-wrap"><i class="fas fa-laptop-code"></i></div>
+                    <h3>Full Websites</h3>
+                    <div class="price">
+                        <small>Starting at</small>
+                        <span>$150</span>
+                        <small class="price-unit">per project</small>
+                    </div>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Multiple pages</li>
+                        <li><i class="fas fa-check"></i> Custom animations</li>
+                        <li><i class="fas fa-check"></i> Premium aesthetic</li>
+                        <li><i class="fas fa-check"></i> Ongoing support</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-secondary btn-block price-cta">Get Started</a>
+                </div>
+
             </div>
 
-            <div class="price-card popular reveal">
-                <div class="badge">Most Popular</div>
-                <div class="price-icon-wrap popular-icon"><i class="fas fa-cogs"></i></div>
-                <h3>Small Systems</h3>
-                <div class="price">
-                    <span>$20 – $50</span>
-                    <small class="price-unit">per system</small>
-                </div>
-                <ul>
-                    <li><i class="fas fa-check"></i> Custom mechanics</li>
-                    <li><i class="fas fa-check"></i> UI integration</li>
-                    <li><i class="fas fa-check"></i> Combat / inventory</li>
-                    <li><i class="fas fa-check"></i> Revisions included</li>
-                </ul>
-                <a href="#contact" class="btn btn-primary btn-block price-cta">Get Started</a>
-            </div>
-
-            <div class="price-card reveal">
-                <div class="price-icon-wrap"><i class="fas fa-rocket"></i></div>
-                <h3>Landing Pages</h3>
-                <div class="price">
-                    <span>$40 – $100</span>
-                    <small class="price-unit">per page</small>
-                </div>
-                <ul>
-                    <li><i class="fas fa-check"></i> Modern design</li>
-                    <li><i class="fas fa-check"></i> Fully responsive</li>
-                    <li><i class="fas fa-check"></i> SEO friendly</li>
-                    <li><i class="fas fa-check"></i> Fast delivery</li>
-                </ul>
-                <a href="#contact" class="btn btn-secondary btn-block price-cta">Get Started</a>
-            </div>
-
-            <div class="price-card reveal">
-                <div class="price-icon-wrap"><i class="fas fa-laptop-code"></i></div>
-                <h3>Full Websites</h3>
-                <div class="price">
-                    <small>Starting at</small>
-                    <span>$150</span>
-                    <small class="price-unit">per project</small>
-                </div>
-                <ul>
-                    <li><i class="fas fa-check"></i> Multiple pages</li>
-                    <li><i class="fas fa-check"></i> Custom animations</li>
-                    <li><i class="fas fa-check"></i> Premium aesthetic</li>
-                    <li><i class="fas fa-check"></i> Ongoing support</li>
-                </ul>
-                <a href="#contact" class="btn btn-secondary btn-block price-cta">Get Started</a>
-            </div>
-
+            <p class="pricing-note reveal">
+                <i class="fas fa-lock"></i> 50% upfront, 50% on delivery — or pay 100% upfront. You choose.
+            </p>
         </div>
-
-<p class="pricing-note reveal">
-    <i class="fas fa-lock"></i> 50% upfront, 50% on delivery — or pay 100% upfront. You choose.
-</p>
+    </section>
+<section id="why-me" class="section alt-bg">
+    <div class="container">
+        <h2 class="section-title reveal">Why <span class="gradient-text">Me</span></h2>
+        <p class="section-subtitle reveal">What sets my services apart.</p>
+        <ul class="why-list reveal">
+    <li><i class="fas fa-check"></i> Clean modern design</li>
+    <li><i class="fas fa-check"></i> Fast delivery</li>
+    <li><i class="fas fa-check"></i> Responsive design (mobile + desktop)</li>
+    <li><i class="fas fa-check"></i> Free revisions</li>
+</ul>
     </div>
 </section>
 
-    <!-- Contact Section -->
     <section id="contact" class="section alt-bg">
         <div class="container">
             <h2 class="section-title reveal">Get In <span class="gradient-text">Touch</span></h2>
@@ -299,40 +458,40 @@
                     <h3>Let's build something <span class="gradient-text">great</span>.</h3>
                     <p>Whether you need a Roblox system patched up or a brand new website designed from scratch, I'm ready to help. Message me and I'll respond quickly.</p>
                     <div class="contact-details">
-                        <div class="contact-item">
+                        <a href="https://discord.com/users/1481990642174263462" target="_blank" class="contact-item" style="text-decoration:none;cursor:pointer;">
                             <i class="fab fa-discord"></i>
                             <span>inbo_scripts</span>
-                        </div>
+                        </a>
                         <div class="contact-item">
                             <i class="fas fa-envelope"></i>
                             <span>maqsianelimd@gmail.com</span>
                         </div>
                     </div>
                 </div>
-<form class="contact-form" id="contactForm" action="https://formsubmit.co/maqsianelimd@gmail.com" method="POST">
-    <input type="hidden" name="_subject" value="New message from inbo.dev portfolio">
-    <input type="hidden" name="_captcha" value="false">
-    <input type="hidden" name="_template" value="table">
-    <input type="hidden" name="_next" value="thanks">
-    <div class="form-group">
-        <input type="text" name="name" id="name" placeholder="Your Name or Discord Username" required>
-    </div>
-    <div class="form-group">
-        <input type="email" name="email" id="email" placeholder="Your Email" required>
-    </div>
-    <div class="form-group">
-        <textarea name="message" id="message" rows="5" placeholder="Tell me about your project..." required></textarea>
-    </div>
-    <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-paper-plane"></i> Send Message</button>
-    <div id="formMessage" class="form-message"></div>
-</form>
+                <form class="contact-form" id="contactForm" action="https://formsubmit.co/maqsianelimd@gmail.com" method="POST">
+                    <input type="hidden" name="_subject" value="New message from inbodev.netlify.app portfolio">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_next" value="thanks">
+                    <div class="form-group">
+                        <input type="text" name="name" id="name" placeholder="Your Name or Discord Username" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" id="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" id="message" rows="5" placeholder="Tell me about your project..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-paper-plane"></i> Send Message</button>
+                    <div id="formMessage" class="form-message"></div>
+                </form>
             </div>
         </div>
     </section>
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 inbo.dev — All rights reserved.</p>
+            <p>&copy; 2026 inbodev.netlify.app — All rights reserved.</p>
             <div class="social-links">
                 <a href="https://discord.com/users/1481990642174263462" target="_blank" aria-label="Discord"><i class="fab fa-discord"></i></a>
             </div>

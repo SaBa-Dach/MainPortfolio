@@ -1,8 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // ============================================
-    //  PARTICLE BACKGROUND
-    // ============================================
+    const projFilters = document.querySelectorAll('.proj-filter');
+    const projCards   = document.querySelectorAll('.proj-card-new');
+
+    projFilters.forEach(btn => {
+        btn.addEventListener('click', () => {
+            projFilters.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const f = btn.dataset.filter;
+            projCards.forEach(c => {
+                const cats = c.dataset.cat.split(' ');
+                c.classList.toggle('hidden', f !== 'all' && !cats.includes(f));
+            });
+        });
+    });
 
     const canvas = document.getElementById('particles-canvas');
     if (canvas) {
@@ -43,7 +54,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 this.x += this.speedX;
                 this.y += this.speedY;
 
-                // Mouse interaction
                 if (mouse.x !== null && mouse.y !== null) {
                     const dx = mouse.x - this.x;
                     const dy = mouse.y - this.y;
@@ -55,7 +65,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 }
 
-                // Wrap around
                 if (this.x < 0) this.x = canvas.width;
                 if (this.x > canvas.width) this.x = 0;
                 if (this.y < 0) this.y = canvas.height;
@@ -111,7 +120,6 @@ document.addEventListener('DOMContentLoaded', () => {
         initParticles();
         animateParticles();
 
-        // Pause particles when not visible
         const heroSection = document.getElementById('home');
         const particleObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -124,10 +132,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }, { threshold: 0.1 });
         if (heroSection) particleObserver.observe(heroSection);
     }
-
-    // ============================================
-    //  TYPEWRITER EFFECT
-    // ============================================
 
     const heroSubtitle = document.getElementById('heroSubtitle');
     if (heroSubtitle) {
@@ -155,7 +159,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 typingSpeed = 55;
             }
 
-            // Add cursor
             if (!heroSubtitle.querySelector('.typewriter-cursor')) {
                 const cursor = document.createElement('span');
                 cursor.className = 'typewriter-cursor';
@@ -163,24 +166,19 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             if (!isDeleting && charIndex === currentPhrase.length) {
-                typingSpeed = 2500; // Pause at end
+                typingSpeed = 2500;
                 isDeleting = true;
             } else if (isDeleting && charIndex === 0) {
                 isDeleting = false;
                 phraseIndex = (phraseIndex + 1) % phrases.length;
-                typingSpeed = 400; // Pause before next phrase
+                typingSpeed = 400;
             }
 
             setTimeout(typeWriter, typingSpeed);
         }
 
-        // Start typewriter after hero animation completes
         setTimeout(typeWriter, 1200);
     }
-
-    // ============================================
-    //  SCROLL REVEAL ANIMATIONS
-    // ============================================
 
     const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
 
@@ -199,10 +197,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     revealElements.forEach(el => revealObserver.observe(el));
 
-    // ============================================
-    //  NAVBAR — Scroll-aware style
-    // ============================================
-
     const navbar = document.getElementById('navbar');
     let lastScroll = 0;
 
@@ -217,10 +211,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         lastScroll = currentScroll;
     }, { passive: true });
-
-    // ============================================
-    //  MOBILE NAVIGATION
-    // ============================================
 
     const hamburger = document.getElementById('hamburger');
     const navLinks = document.getElementById('navLinks');
@@ -239,7 +229,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Close mobile menu when a link is clicked
     const links = document.querySelectorAll('#navLinks a');
     links.forEach(link => {
         link.addEventListener('click', () => {
@@ -251,10 +240,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
-
-    // ============================================
-    //  SMOOTH SCROLL for nav links
-    // ============================================
 
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
@@ -269,10 +254,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
-
-    // ============================================
-    //  ACTIVE NAV LINK on scroll
-    // ============================================
 
     const sections = document.querySelectorAll('section[id]');
     const navItems = document.querySelectorAll('#navLinks a[href^="#"]');
@@ -296,53 +277,49 @@ document.addEventListener('DOMContentLoaded', () => {
 
     sections.forEach(section => sectionObserver.observe(section));
 
-    // ============================================
-    //  CONTACT FORM — AJAX Submission
-    // ============================================
+    const contactForm = document.getElementById('contactForm');
+    const formMessage = document.getElementById('formMessage');
 
-   const contactForm = document.getElementById('contactForm');
-const formMessage = document.getElementById('formMessage');
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
 
-if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            submitBtn.disabled = true;
 
-        const submitBtn = contactForm.querySelector('button[type="submit"]');
-        const originalText = submitBtn.innerHTML;
-        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-        submitBtn.disabled = true;
+            const formData = new FormData(contactForm);
 
-        const formData = new FormData(contactForm);
+            fetch(contactForm.action, { method: 'POST', body: formData })
+                .then(res => {
+                    if (res.ok) {
+                        formMessage.innerHTML = '<span style="color:#10b981;"><i class="fas fa-check-circle"></i> Message sent! I\'ll get back to you soon.</span>';
+                        contactForm.reset();
+                    } else {
+                        formMessage.innerHTML = '<span style="color:#ef4444;"><i class="fas fa-exclamation-circle"></i> Something went wrong. DM me on Discord instead.</span>';
+                    }
+                })
+                .catch(() => {
+                    formMessage.innerHTML = '<span style="color:#ef4444;"><i class="fas fa-exclamation-circle"></i> Error sending. DM me on Discord instead.</span>';
+                })
+                .finally(() => {
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                });
+        });
+    }
 
-        fetch(contactForm.action, { method: 'POST', body: formData })
-            .then(res => {
-                if (res.ok) {
-                    formMessage.innerHTML = '<span style="color:#10b981;"><i class="fas fa-check-circle"></i> Message sent! I\'ll get back to you soon.</span>';
-                    contactForm.reset();
-                } else {
-                    formMessage.innerHTML = '<span style="color:#ef4444;"><i class="fas fa-exclamation-circle"></i> Something went wrong. DM me on Discord instead.</span>';
-                }
-            })
-            .catch(() => {
-                formMessage.innerHTML = '<span style="color:#ef4444;"><i class="fas fa-exclamation-circle"></i> Error sending. DM me on Discord instead.</span>';
-            })
-            .finally(() => {
-                submitBtn.innerHTML = originalText;
-                submitBtn.disabled = false;
-            });
-    });
-}
-
-    // ============================================
-    //  TILT EFFECT ON CARDS (optional subtle)
-    // ============================================
-
-    const cards = document.querySelectorAll('.card, .project-card, .price-card');
+    const cards = document.querySelectorAll('.card, .project-card, .price-card, .proj-card-new');
     cards.forEach(card => {
         card.addEventListener('mousemove', (e) => {
             const rect = card.getBoundingClientRect();
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
+
+            card.style.setProperty('--mouse-x', `${x}px`);
+            card.style.setProperty('--mouse-y', `${y}px`);
+
             const centerX = rect.width / 2;
             const centerY = rect.height / 2;
             const rotateX = ((y - centerY) / centerY) * -3;
