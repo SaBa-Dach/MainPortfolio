@@ -6,11 +6,501 @@
     <meta name="description" content="Professional Roblox & Web Developer — Custom game systems, UI design, and modern landing pages built with precision.">
     <title>inbodev.netlify.app — Roblox & Web Developer</title>
     <link rel="icon" type="image/png" href="assets/portfolio_logo.png">
-    <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+/* ============================================
+   PREMIUM PORTFOLIO — Design System
+   ============================================ */
+
+:root {
+    --bg-primary: #08090d;
+    --bg-secondary: #0e1017;
+    --bg-elevated: #13151c;
+    --bg-card: rgba(18, 20, 30, 0.7);
+    --bg-card-hover: rgba(25, 28, 42, 0.85);
+    --text-primary: #f0f2f8;
+    --text-secondary: #8b92a8;
+    --text-muted: #5a6178;
+    --accent-1: #6366f1;
+    --accent-2: #8b5cf6;
+    --accent-3: #a78bfa;
+    --accent-4: #06b6d4;
+    --gradient-accent: linear-gradient(135deg, var(--accent-1), var(--accent-2), var(--accent-4));
+    --gradient-accent-text: linear-gradient(135deg, var(--accent-3), var(--accent-1), var(--accent-4));
+    --glow-accent: rgba(99, 102, 241, 0.35);
+    --glow-purple: rgba(139, 92, 246, 0.25);
+    --glow-cyan: rgba(6, 182, 212, 0.2);
+    --border-subtle: rgba(255, 255, 255, 0.04);
+    --border-accent: rgba(99, 102, 241, 0.2);
+    --border-glow: rgba(139, 92, 246, 0.35);
+    --font-heading: 'Outfit', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --transition-fast: 0.2s var(--ease-out-expo);
+    --transition-base: 0.4s var(--ease-out-expo);
+    --transition-slow: 0.7s var(--ease-out-expo);
+    --shadow-sm: 0 2px 8px rgba(0,0,0,0.3);
+    --shadow-md: 0 8px 30px rgba(0,0,0,0.4);
+    --shadow-lg: 0 20px 60px rgba(0,0,0,0.5);
+    --shadow-glow: 0 0 40px var(--glow-accent), 0 0 80px var(--glow-purple);
+    --shadow-glow-sm: 0 0 20px var(--glow-accent);
+    --section-padding: 8rem 0;
+    --container-max: 1200px;
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 20px;
+    --radius-xl: 28px;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.7;
+    overflow-x: hidden;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.4;
+}
+
+h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); line-height: 1.15; font-weight: 700; }
+a { text-decoration: none; color: inherit; transition: color var(--transition-fast); }
+ul { list-style: none; }
+img { max-width: 100%; display: block; }
+::selection { background: var(--accent-1); color: #fff; }
+
+.container { max-width: var(--container-max); margin: 0 auto; padding: 0 2rem; }
+.section { padding: var(--section-padding); position: relative; }
+.alt-bg { background-color: var(--bg-secondary); }
+
+/* Scroll Reveal */
+.reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo); }
+.reveal.revealed { opacity: 1; transform: translateY(0); }
+.reveal-left { opacity: 0; transform: translateX(-50px); transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo); }
+.reveal-left.revealed { opacity: 1; transform: translateX(0); }
+.reveal-right { opacity: 0; transform: translateX(50px); transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo); }
+.reveal-right.revealed { opacity: 1; transform: translateX(0); }
+.reveal-scale { opacity: 0; transform: scale(0.9); transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo); }
+.reveal-scale.revealed { opacity: 1; transform: scale(1); }
+.stagger-children .reveal:nth-child(1) { transition-delay: 0ms; }
+.stagger-children .reveal:nth-child(2) { transition-delay: 100ms; }
+.stagger-children .reveal:nth-child(3) { transition-delay: 200ms; }
+.stagger-children .reveal:nth-child(4) { transition-delay: 300ms; }
+.stagger-children .reveal:nth-child(5) { transition-delay: 400ms; }
+.stagger-children .reveal:nth-child(6) { transition-delay: 500ms; }
+
+.gradient-text { background: var(--gradient-accent-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.accent { color: var(--accent-3); }
+
+.section-title { font-size: 2.8rem; text-align: center; margin-bottom: 1rem; letter-spacing: -0.03em; }
+.section-subtitle { text-align: center; color: var(--text-secondary); font-size: 1.1rem; max-width: 600px; margin: 0 auto 4rem; }
+.section-title::after { content: ''; display: block; width: 60px; height: 3px; background: var(--gradient-accent); margin: 1rem auto 0; border-radius: 2px; }
+
+/* Buttons */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.85rem 2rem; border-radius: var(--radius-sm); font-weight: 600; font-size: 0.95rem; cursor: pointer; text-align: center; border: 2px solid transparent; position: relative; overflow: hidden; transition: all var(--transition-base); letter-spacing: 0.01em; }
+.btn::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0)); opacity: 0; transition: opacity var(--transition-fast); }
+.btn:hover::before { opacity: 1; }
+.btn-primary { background: var(--gradient-accent); color: #fff; box-shadow: var(--shadow-glow-sm); }
+.btn-primary:hover { transform: translateY(-3px); box-shadow: var(--shadow-glow); filter: brightness(1.15); }
+.btn-primary:active { transform: translateY(-1px); }
+.btn-secondary { background: transparent; border-color: var(--border-accent); color: var(--text-primary); backdrop-filter: blur(8px); }
+.btn-secondary:hover { border-color: var(--accent-2); color: var(--accent-3); transform: translateY(-3px); box-shadow: 0 0 25px var(--glow-purple); }
+.btn-outline { background: transparent; border-color: var(--border-accent); color: var(--accent-3); padding: 0.65rem 1.4rem; font-size: 0.9rem; }
+.btn-outline:hover { background: var(--gradient-accent); border-color: transparent; color: #fff; transform: translateY(-2px); box-shadow: var(--shadow-glow-sm); }
+.btn-block { display: block; width: 100%; }
+
+/* Navbar */
+.navbar { position: fixed; top: 0; width: 100%; z-index: 1000; transition: all var(--transition-base); background: transparent; border-bottom: 1px solid transparent; }
+.navbar.scrolled { background: rgba(8, 9, 13, 0.85); backdrop-filter: blur(20px) saturate(1.8); border-bottom: 1px solid var(--border-subtle); box-shadow: 0 4px 30px rgba(0,0,0,0.3); }
+.nav-container { max-width: var(--container-max); margin: 0 auto; padding: 1.2rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+.logo { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 800; display: flex; align-items: center; gap: 10px; }
+.logo img { height: 36px; border-radius: var(--radius-sm); transition: transform var(--transition-fast); }
+.logo:hover img { transform: scale(1.1) rotate(-3deg); }
+.nav-links { display: flex; gap: 2rem; align-items: center; }
+.nav-links a { font-size: 0.92rem; font-weight: 500; color: var(--text-secondary); position: relative; padding: 0.25rem 0; transition: color var(--transition-base), transform var(--transition-base); }
+.nav-links a:hover { color: var(--text-primary); transform: scale(1.05); }
+.nav-links a::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px; background: var(--gradient-accent); border-radius: 1px; transition: width var(--transition-base); }
+.nav-links a:hover::after { width: 100%; }
+.btn-nav { background: rgba(99, 102, 241, 0.08) !important; color: var(--accent-3) !important; padding: 0.5rem 1.2rem !important; border-radius: var(--radius-sm) !important; border: 1px solid var(--border-accent) !important; transition: all var(--transition-base) !important; }
+.btn-nav::after { display: none !important; }
+.btn-nav:hover { background: var(--accent-1) !important; color: #fff !important; border-color: var(--accent-1) !important; box-shadow: var(--shadow-glow-sm) !important; transform: translateY(-2px) !important; }
+.hamburger { display: none; font-size: 1.5rem; cursor: pointer; color: var(--text-primary); transition: color var(--transition-fast); }
+.hamburger:hover { color: var(--accent-3); }
+
+/* Hero */
+.hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; position: relative; padding: 0 2rem; overflow: hidden; }
+.hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 50% at 20% 40%, var(--glow-accent) 0%, transparent 70%), radial-gradient(ellipse 60% 40% at 80% 60%, var(--glow-purple) 0%, transparent 70%), radial-gradient(ellipse 50% 30% at 50% 20%, var(--glow-cyan) 0%, transparent 70%); animation: meshFloat 12s ease-in-out infinite alternate; z-index: 0; }
+@keyframes meshFloat { 0% { opacity: 0.6; transform: scale(1) rotate(0deg); } 50% { opacity: 0.8; transform: scale(1.05) rotate(1deg); } 100% { opacity: 0.6; transform: scale(1) rotate(-1deg); } }
+.hero-grid-pattern { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px); background-size: 60px 60px; z-index: 1; mask-image: radial-gradient(ellipse 70% 60% at center, black, transparent); }
+#particles-canvas { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+.hero-content { max-width: 900px; z-index: 3; position: relative; }
+.hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1.2rem; background: rgba(99, 102, 241, 0.08); border: 1px solid var(--border-accent); border-radius: 50px; font-size: 0.85rem; color: var(--accent-3); margin-bottom: 2rem; backdrop-filter: blur(10px); animation: fadeInDown 1s var(--ease-out-expo) 0.2s both; }
+.hero-badge .pulse-dot { width: 8px; height: 8px; background: #10b981; border-radius: 50%; animation: pulse 2s ease-in-out infinite; }
+@keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.5); } }
+.hero-title { font-size: clamp(3rem, 6vw, 5rem); font-weight: 800; letter-spacing: -0.04em; margin-bottom: 1.5rem; animation: fadeInUp 1s var(--ease-out-expo) 0.4s both; }
+.hero-title .gradient-text { background-size: 200% 200%; animation: gradientShift 4s ease-in-out infinite; }
+@keyframes gradientShift { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+.hero-subtitle { font-size: 1.25rem; color: var(--text-secondary); margin-bottom: 2.5rem; max-width: 600px; margin-left: auto; margin-right: auto; animation: fadeInUp 1s var(--ease-out-expo) 0.6s both; }
+.typewriter-cursor { display: inline-block; width: 2px; height: 1.2em; background: var(--accent-3); margin-left: 2px; vertical-align: text-bottom; animation: blink 1s step-end infinite; }
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+.hero-buttons { display: flex; gap: 1rem; justify-content: center; animation: fadeInUp 1s var(--ease-out-expo) 0.8s both; }
+.hero-orb { position: absolute; border-radius: 50%; filter: blur(80px); z-index: 0; pointer-events: none; }
+.hero-orb-1 { width: 400px; height: 400px; background: var(--accent-1); opacity: 0.12; top: 10%; left: -5%; animation: float1 8s ease-in-out infinite; }
+.hero-orb-2 { width: 350px; height: 350px; background: var(--accent-4); opacity: 0.08; bottom: 10%; right: -5%; animation: float2 10s ease-in-out infinite; }
+.hero-orb-3 { width: 250px; height: 250px; background: var(--accent-2); opacity: 0.1; top: 40%; right: 20%; animation: float3 12s ease-in-out infinite; }
+@keyframes float1 { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(30px, -40px); } }
+@keyframes float2 { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(-25px, 35px); } }
+@keyframes float3 { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(-20px, -30px); } }
+.scroll-indicator { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); z-index: 3; display: flex; flex-direction: column; align-items: center; gap: 0.5rem; color: var(--text-muted); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; animation: fadeInUp 1s var(--ease-out-expo) 1.2s both; }
+.scroll-indicator .mouse { width: 24px; height: 38px; border: 2px solid var(--text-muted); border-radius: 12px; position: relative; }
+.scroll-indicator .mouse::after { content: ''; width: 3px; height: 8px; background: var(--accent-3); border-radius: 2px; position: absolute; top: 6px; left: 50%; transform: translateX(-50%); animation: scrollDot 2s ease-in-out infinite; }
+@keyframes scrollDot { 0% { opacity: 1; transform: translateX(-50%) translateY(0); } 100% { opacity: 0; transform: translateX(-50%) translateY(14px); } }
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+
+/* About */
+.about-content { display: flex; justify-content: center; }
+.about-text { max-width: 750px; text-align: center; font-size: 1.15rem; color: var(--text-secondary); line-height: 1.8; }
+.about-text p { position: relative; padding: 2rem 2.5rem; background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); backdrop-filter: blur(12px); }
+.about-text p::before { content: ''; position: absolute; inset: -1px; border-radius: var(--radius-lg); padding: 1px; background: linear-gradient(135deg, var(--border-accent), transparent 50%, var(--glow-cyan)); mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); mask-composite: exclude; -webkit-mask-composite: xor; pointer-events: none; }
+
+/* Cards */
+.cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
+.card { background: var(--bg-card); border: 1px solid var(--border-subtle); padding: 2rem; border-radius: var(--radius-md); transition: all var(--transition-base); position: relative; overflow: hidden; backdrop-filter: blur(12px); }
+.card::before { content: ''; position: absolute; inset: -1px; border-radius: var(--radius-md); padding: 1px; background: linear-gradient(135deg, transparent, transparent); mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); mask-composite: exclude; -webkit-mask-composite: xor; pointer-events: none; transition: background var(--transition-base); }
+.card:hover::before { background: radial-gradient(180px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), var(--accent-2) 0%, rgba(99, 102, 241, 0.4) 50%, transparent 100%); }
+.card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 80px; background: linear-gradient(180deg, var(--glow-accent), transparent); opacity: 0; transition: opacity var(--transition-base); pointer-events: none; }
+.card:hover::after { opacity: 0.15; }
+.card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); background: radial-gradient(400px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(99, 102, 241, 0.12), transparent 70%), var(--bg-card-hover); }
+.card-icon { font-size: 2.2rem; margin-bottom: 1.5rem; width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; background: rgba(99, 102, 241, 0.08); border-radius: var(--radius-sm); border: 1px solid var(--border-accent); color: var(--accent-3); transition: all var(--transition-base); }
+.card:hover .card-icon { background: rgba(99, 102, 241, 0.15); border-color: var(--accent-2); transform: scale(1.08); box-shadow: 0 0 20px var(--glow-accent); }
+.card h3 { margin-bottom: 0.8rem; font-size: 1.2rem; color: var(--text-primary); }
+.card p { color: var(--text-secondary); font-size: 0.92rem; line-height: 1.6; }
+
+/* Project cards (old) */
+.projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
+.project-card { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); overflow: hidden; transition: all var(--transition-base); display: flex; flex-direction: column; position: relative; }
+.project-card::before { content: ''; position: absolute; inset: -1px; border-radius: var(--radius-lg); padding: 1px; background: linear-gradient(135deg, transparent, transparent); mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); mask-composite: exclude; -webkit-mask-composite: xor; pointer-events: none; transition: background var(--transition-base); z-index: 2; }
+.project-card:hover::before { background: linear-gradient(135deg, var(--accent-1), var(--accent-4)); }
+.project-card:hover { transform: translateY(-8px) scale(1.01); box-shadow: var(--shadow-lg); }
+.project-content { padding: 1.8rem; flex-grow: 1; display: flex; flex-direction: column; }
+.project-content h3 { margin-bottom: 0.6rem; font-size: 1.2rem; }
+.project-content p { color: var(--text-secondary); margin-bottom: 1.5rem; flex-grow: 1; font-size: 0.92rem; line-height: 1.6; }
+
+/* Pricing */
+.pricing-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; align-items: stretch; }
+.price-card { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 2rem 1.75rem 1.75rem; display: flex; flex-direction: column; gap: 0; position: relative; transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base); backdrop-filter: blur(12px); overflow: hidden; }
+.price-card::after { content: ''; position: absolute; inset: -1px; border-radius: var(--radius-lg); padding: 1px; background: linear-gradient(135deg, transparent, transparent); mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); mask-composite: exclude; -webkit-mask-composite: xor; pointer-events: none; transition: background var(--transition-base); }
+.price-card:hover::after { background: radial-gradient(180px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), var(--accent-2) 0%, rgba(99, 102, 241, 0.4) 50%, transparent 100%); }
+.price-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: var(--border-accent); background: radial-gradient(400px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(99, 102, 241, 0.12), transparent 70%), var(--bg-card-hover); }
+.price-card.popular { border-color: var(--accent-1); box-shadow: 0 0 0 1px var(--accent-1), 0 20px 60px rgba(99, 102, 241, 0.15); }
+.price-card.popular::after { background: linear-gradient(135deg, var(--accent-1), var(--accent-2), var(--accent-4)); }
+.price-card.popular:hover { transform: translateY(-6px); box-shadow: 0 0 0 1px var(--accent-1), var(--shadow-glow); }
+.price-card.popular::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--gradient-accent); z-index: 1; }
+.badge { position: absolute; top: 14px; right: 14px; background: rgba(99, 102, 241, 0.12); color: var(--accent-3); padding: 0.25rem 0.75rem; border-radius: 50px; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; border: 1px solid var(--border-accent); }
+.price-icon-wrap { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: rgba(99, 102, 241, 0.07); border: 1px solid var(--border-accent); border-radius: var(--radius-sm); color: var(--accent-3); font-size: 1.2rem; margin-bottom: 1.2rem; transition: all var(--transition-base); }
+.price-card:hover .price-icon-wrap { background: rgba(99, 102, 241, 0.14); box-shadow: 0 0 16px var(--glow-accent); }
+.popular-icon { background: rgba(99, 102, 241, 0.12); }
+.price-card h3 { font-size: 1.1rem; font-weight: 700; color: var(--text-primary); margin-bottom: 1rem; }
+.price { margin-bottom: 1.5rem; display: flex; flex-direction: column; gap: 0.1rem; }
+.price small { font-size: 0.78rem; color: var(--text-muted); font-weight: 400; }
+.price span { font-size: 2.2rem; font-weight: 800; line-height: 1.1; background: var(--gradient-accent-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-family: var(--font-heading); }
+.price-unit { font-size: 0.78rem; color: var(--text-muted); }
+.price-card ul { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; margin-bottom: 1.75rem; flex: 1; }
+.price-card ul li { display: flex; align-items: center; gap: 0.6rem; font-size: 0.88rem; color: var(--text-secondary); line-height: 1.4; }
+.price-card ul li i { color: var(--accent-3); font-size: 0.75rem; flex-shrink: 0; opacity: 0.9; }
+.price-cta { margin-top: auto; }
+.pricing-note { text-align: center; color: var(--text-muted); font-size: 0.83rem; margin-top: 2.5rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem; }
+.pricing-note i { color: var(--accent-3); font-size: 0.85rem; }
+
+@media (max-width: 1024px) { .pricing-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .pricing-grid { grid-template-columns: 1fr; } }
+
+/* Contact */
+.contact-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; background: var(--bg-card); border: 1px solid var(--border-subtle); padding: 3rem; border-radius: var(--radius-xl); position: relative; overflow: hidden; backdrop-filter: blur(12px); }
+.contact-wrapper::before { content: ''; position: absolute; inset: -1px; border-radius: var(--radius-xl); padding: 1px; background: linear-gradient(135deg, var(--border-accent), transparent 40%, var(--glow-cyan)); mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); mask-composite: exclude; -webkit-mask-composite: xor; pointer-events: none; }
+.contact-wrapper::after { content: ''; position: absolute; top: -50%; right: -30%; width: 400px; height: 400px; background: radial-gradient(circle, var(--glow-accent), transparent 70%); opacity: 0.1; pointer-events: none; }
+.contact-info h3 { font-size: 1.8rem; margin-bottom: 1rem; letter-spacing: -0.02em; }
+.contact-info p { color: var(--text-secondary); margin-bottom: 2rem; line-height: 1.7; }
+.contact-details { display: flex; flex-direction: column; gap: 1.2rem; }
+.contact-item { display: flex; align-items: center; gap: 1rem; font-size: 1.05rem; color: var(--text-secondary); padding: 0.8rem 1rem; background: rgba(255,255,255,0.02); border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); transition: all var(--transition-fast); }
+.contact-item:hover { background: rgba(99, 102, 241, 0.05); border-color: var(--border-accent); }
+.contact-item i { color: var(--accent-3); font-size: 1.3rem; width: 24px; text-align: center; }
+.form-group { margin-bottom: 1.2rem; }
+input, textarea { width: 100%; padding: 0.9rem 1.1rem; background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); color: var(--text-primary); font-family: var(--font-body); font-size: 0.95rem; transition: all var(--transition-base); }
+input:focus, textarea:focus { outline: none; border-color: var(--accent-1); background: rgba(99, 102, 241, 0.03); box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.08); }
+input::placeholder, textarea::placeholder { color: var(--text-muted); }
+.form-message { margin-top: 1rem; text-align: center; font-weight: 500; font-size: 0.9rem; }
+
+/* Footer */
+footer { text-align: center; padding: 3rem 0; border-top: 1px solid var(--border-subtle); background: var(--bg-secondary); position: relative; }
+footer p { color: var(--text-muted); margin-bottom: 1rem; font-size: 0.9rem; }
+.social-links { display: flex; justify-content: center; gap: 1.5rem; }
+.social-links a { color: var(--text-muted); font-size: 1.2rem; width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 50%; border: 1px solid var(--border-subtle); transition: all var(--transition-base); }
+.social-links a:hover { color: var(--accent-3); border-color: var(--accent-1); background: rgba(99, 102, 241, 0.08); transform: translateY(-3px); box-shadow: var(--shadow-glow-sm); }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg-primary); }
+::-webkit-scrollbar-thumb { background: var(--accent-1); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent-2); }
+
+/* Responsive */
+@media (max-width: 992px) { .contact-wrapper { grid-template-columns: 1fr; } .hero-title { font-size: clamp(2.5rem, 5vw, 3.5rem); } .section-title { font-size: 2.2rem; } }
+@media (max-width: 768px) {
+    .nav-links { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: rgba(8, 9, 13, 0.95); backdrop-filter: blur(20px); flex-direction: column; padding: 2rem; border-bottom: 1px solid var(--border-subtle); gap: 1rem; }
+    .nav-links.active { display: flex; }
+    .nav-links a::after { display: none; }
+    .hamburger { display: block; }
+    .hero-title { font-size: 2.2rem; }
+    .hero-buttons { flex-direction: column; align-items: center; }
+    .cards-grid { grid-template-columns: 1fr; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .pricing-grid { grid-template-columns: 1fr; }
+    .price-card.popular { transform: none; }
+    .price-card.popular:hover { transform: translateY(-8px); }
+    .section { padding: 5rem 0; }
+    .section-title { font-size: 1.8rem; }
+    .contact-wrapper { padding: 2rem; }
+}
+@media (max-width: 480px) { .container { padding: 0 1.2rem; } .hero-title { font-size: 1.8rem; } .hero-subtitle { font-size: 1rem; } .contact-wrapper { padding: 1.5rem; } }
+
+/* Projects v2 */
+.projects-grid-new { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.proj-filter { padding: 0.5rem 1.2rem; border-radius: 50px; font-size: 0.82rem; font-weight: 600; cursor: pointer; border: 1px solid var(--border-accent); background: transparent; color: var(--text-secondary); transition: all 0.25s ease; font-family: var(--font-body); letter-spacing: 0.02em; }
+.proj-filter:hover { color: var(--text-primary); border-color: var(--accent-2); }
+.proj-filter.active { background: var(--gradient-accent); border-color: transparent; color: #fff; box-shadow: 0 0 20px var(--glow-accent); }
+.proj-card-new { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); overflow: hidden; display: flex; flex-direction: column; position: relative; transition: transform 0.35s var(--ease-out-expo), box-shadow 0.35s ease, border-color 0.35s ease; cursor: pointer; }
+.proj-card-new::before { content: ''; position: absolute; inset: -1px; border-radius: var(--radius-lg); padding: 1px; background: linear-gradient(135deg, transparent, transparent); mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); mask-composite: exclude; -webkit-mask-composite: xor; pointer-events: none; transition: background var(--transition-base); z-index: 5; }
+.proj-card-new:hover::before { background: radial-gradient(180px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), var(--accent-2) 0%, rgba(99, 102, 241, 0.4) 50%, transparent 100%); }
+.proj-card-new:hover { transform: translateY(-10px); box-shadow: 0 28px 60px rgba(0,0,0,0.5), 0 0 40px var(--glow-accent); border-color: rgba(99,102,241,0.35); background: radial-gradient(400px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(99, 102, 241, 0.12), transparent 70%), var(--bg-card-hover); }
+.proj-card-new.featured { border-color: var(--border-accent); }
+.proj-thumb { position: relative; height: 190px; overflow: hidden; background: linear-gradient(135deg, #07080f, #0e1020); padding: 0.75rem; display: flex; align-items: center; justify-content: center; }
+.gaming-thumb { background: linear-gradient(135deg, #0a0714, #140818); }
+.saas-thumb { background: linear-gradient(135deg, #07080f, #0d0f1e); }
+.roblox-thumb { background: linear-gradient(135deg, #060a16, #0b1022); }
+.discord-thumb { background: linear-gradient(135deg, #0b0c16, #1b1c30); }
+.html-thumb { background: linear-gradient(135deg, #070e17, #0d1e30); }
+.uiux-thumb { background: linear-gradient(135deg, #07090e, #0f1423); }
+.proj-body-new { padding: 1.4rem 1.5rem 1.5rem; flex: 1; display: flex; flex-direction: column; gap: 0.7rem; }
+.proj-meta { font-size: 0.72rem; color: var(--text-muted); font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; }
+.proj-tags-new { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+.ptag { padding: 0.18rem 0.55rem; border-radius: 4px; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; }
+.ptag.html { background: rgba(228,77,38,0.1); color: #f06529; border: 1px solid rgba(228,77,38,0.15); }
+.ptag.css { background: rgba(38,77,228,0.1); color: #6eb3f7; border: 1px solid rgba(38,77,228,0.15); }
+.ptag.js { background: rgba(240,219,79,0.1); color: #f0db4f; border: 1px solid rgba(240,219,79,0.15); }
+.ptag.roblox { background: rgba(6,182,212,0.1); color: var(--accent-4); border: 1px solid rgba(6,182,212,0.15); }
+.ptag.lua { background: rgba(99,102,241,0.1); color: var(--accent-3); border: 1px solid rgba(99,102,241,0.15); }
+.ptag.design { background: rgba(139,92,246,0.1); color: #c4b5fd; border: 1px solid rgba(139,92,246,0.15); }
+.ptag.discord-tag { background: rgba(88,101,242,0.1); color: #7289da; border: 1px solid rgba(88,101,242,0.15); }
+.proj-title-new { font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700; color: var(--text-primary); line-height: 1.3; }
+.proj-desc-new { font-size: 0.87rem; color: var(--text-secondary); line-height: 1.7; flex: 1; }
+.proj-divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border-accent), transparent); }
+.proj-actions-new { display: flex; gap: 0.6rem; }
+.btn-demo { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.55rem 1.1rem; border-radius: var(--radius-sm); font-size: 0.82rem; font-weight: 600; background: var(--gradient-accent); color: #fff; border: none; text-decoration: none; box-shadow: 0 0 16px var(--glow-accent); transition: all 0.2s ease; }
+.btn-demo:hover { filter: brightness(1.18); transform: translateY(-2px); }
+.proj-card-new.hidden { display: none; }
+@media (max-width: 900px) { .projects-grid-new { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 580px) { .projects-grid-new { grid-template-columns: 1fr; } }
+
+/* iframe mockup */
+.mockup-frame-wrap { width: 100%; background: rgba(14, 16, 26, 0.95); border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; overflow: hidden; }
+.mockup-bar-top { background: rgba(255,255,255,0.03); padding: 0.45rem 0.75rem; display: flex; gap: 5px; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.dot { width: 7px; height: 7px; border-radius: 50%; }
+.dot.r { background: #ff5f57; } .dot.y { background: #febc2e; } .dot.g { background: #28c840; }
+.mockup-url { flex: 1; background: rgba(255,255,255,0.04); border-radius: 3px; height: 13px; margin-left: 5px; }
+.iframe-scaler { position: relative; width: 100%; height: 140px; overflow: hidden; }
+.iframe-scaler iframe { position: absolute; top: 0; left: 0; width: 1280px; height: 800px; border: none; transform: scale(0.195); transform-origin: top left; pointer-events: none; border-radius: 0; }
+
+/* Why Me */
+#why-me { background: var(--bg-card); backdrop-filter: blur(12px); border-radius: var(--radius-lg); padding: 2rem; box-shadow: var(--shadow-glow); margin: 2rem 0; }
+#why-me .section-title { margin-bottom: 0.5rem; }
+#why-me .why-list { display: flex; flex-direction: column; gap: 0.6rem; margin-top: 1rem; }
+#why-me .why-list li { display: flex; align-items: center; gap: 0.5rem; font-size: 1rem; color: var(--text-primary); }
+#why-me .why-list li i { color: var(--accent-2); font-size: 0.9rem; }
+
+/* ============================================
+   PAYMENT MODAL — v2 (compact, scrollable, tabbed)
+   ============================================ */
+.paymodal-overlay {
+  display: none; position: fixed; inset: 0;
+  background: rgba(0,0,0,0.80); z-index: 9999;
+  align-items: center; justify-content: center;
+  padding: 0.75rem; backdrop-filter: blur(8px);
+  overflow-y: auto;
+}
+.paymodal-overlay.active { display: flex; }
+
+.paymodal {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-accent);
+  border-radius: var(--radius-lg);
+  width: 100%; max-width: 420px;
+  max-height: calc(100dvh - 1.5rem);
+  overflow-y: auto;
+  overflow-x: hidden;
+  animation: paymodalIn 0.3s var(--ease-spring) both;
+  box-shadow: 0 24px 70px rgba(0,0,0,0.7), 0 0 35px var(--glow-accent);
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-1) transparent;
+}
+.paymodal::-webkit-scrollbar { width: 4px; }
+.paymodal::-webkit-scrollbar-thumb { background: var(--accent-1); border-radius: 2px; }
+
+@keyframes paymodalIn { from { opacity: 0; transform: scale(0.92) translateY(16px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+
+/* Header */
+.paymodal-header {
+  background: var(--gradient-accent);
+  padding: 1rem 1.25rem; text-align: center; position: relative;
+}
+.paymodal-header h2 { font-size: 1.1rem; font-weight: 700; margin: 0 0 0.15rem; color: #fff; }
+.paymodal-header p { font-size: 0.75rem; color: rgba(255,255,255,0.75); margin: 0; }
+.paymodal-close {
+  position: absolute; top: 0.75rem; right: 0.75rem;
+  background: rgba(255,255,255,0.15); border: none; color: #fff;
+  width: 26px; height: 26px; border-radius: 50%; font-size: 0.85rem;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  transition: background var(--transition-fast); line-height: 1;
+}
+.paymodal-close:hover { background: rgba(255,255,255,0.3); }
+
+/* Category tabs */
+.paymodal-tabs {
+  display: flex; border-bottom: 1px solid var(--border-subtle);
+}
+.paymodal-tab {
+  flex: 1; padding: 0.6rem 0.5rem; text-align: center;
+  font-size: 0.75rem; font-weight: 600; color: var(--text-muted);
+  cursor: pointer; border: none; background: transparent;
+  font-family: var(--font-body); letter-spacing: 0.03em;
+  transition: all 0.2s ease; border-bottom: 2px solid transparent;
+  display: flex; align-items: center; justify-content: center; gap: 5px;
+}
+.paymodal-tab:hover { color: var(--text-secondary); }
+.paymodal-tab.active { color: var(--accent-3); border-bottom-color: var(--accent-1); background: rgba(99,102,241,0.06); }
+.paymodal-tab i { font-size: 0.8rem; }
+
+/* Body */
+.paymodal-body { padding: 1rem 1.25rem; }
+
+/* Steps */
+.paymodal-steps {
+  display: flex; margin-bottom: 1rem;
+  background: rgba(255,255,255,0.03);
+  border-radius: 6px; overflow: hidden;
+  border: 1px solid var(--border-subtle);
+}
+.pms {
+  flex: 1; padding: 0.45rem 0.3rem; text-align: center;
+  font-size: 0.65rem; color: var(--text-muted);
+  display: flex; align-items: center; justify-content: center; gap: 4px; font-weight: 500;
+}
+.pms.active { background: rgba(99,102,241,0.12); color: var(--accent-3); font-weight: 600; }
+.pms.done { color: #10b981; }
+.pms-dot {
+  width: 14px; height: 14px; border-radius: 50%;
+  background: currentColor; color: var(--bg-primary);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 8px; flex-shrink: 0;
+}
+
+/* Service picker grid */
+.paymodal-service-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-bottom: 1rem;
+}
+.paymodal-svc-btn {
+  background: rgba(255,255,255,0.02); border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm); padding: 0.6rem 0.75rem;
+  cursor: pointer; transition: all 0.2s ease; text-align: left;
+  font-family: var(--font-body);
+}
+.paymodal-svc-btn:hover { border-color: var(--border-accent); background: rgba(99,102,241,0.06); }
+.paymodal-svc-btn.selected { border-color: var(--accent-1); background: rgba(99,102,241,0.1); box-shadow: 0 0 12px var(--glow-accent); }
+.paymodal-svc-btn .svc-name { font-size: 0.78rem; font-weight: 600; color: var(--text-primary); display: block; margin-bottom: 0.1rem; }
+.paymodal-svc-btn .svc-price { font-size: 0.7rem; color: var(--accent-3); font-weight: 700; }
+
+/* Selected service summary */
+.paymodal-service {
+  background: rgba(99,102,241,0.07);
+  border: 1px solid var(--border-accent);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 1rem; margin-bottom: 1rem;
+}
+.paymodal-service-name { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.15rem; }
+.paymodal-service-desc { font-size: 0.75rem; color: var(--text-secondary); line-height: 1.5; }
+.paymodal-price-row {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 0.6rem; padding-top: 0.6rem; border-top: 1px solid var(--border-subtle);
+}
+.paymodal-price-label { font-size: 0.72rem; color: var(--text-muted); }
+.paymodal-price-val {
+  font-size: 1.2rem; font-weight: 800;
+  background: var(--gradient-accent-text);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+
+/* PayPal container */
+#paypal-button-container { border-radius: 6px; overflow: hidden; margin-bottom: 0.6rem; }
+
+/* Divider */
+.paymodal-divider { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.6rem; }
+.paymodal-divider span { font-size: 0.7rem; color: var(--text-muted); white-space: nowrap; }
+.paymodal-divider::before, .paymodal-divider::after { content: ''; flex: 1; height: 1px; background: var(--border-subtle); }
+
+/* Discord button */
+.paymodal-discord-btn {
+  display: flex; align-items: center; justify-content: center; gap: 7px;
+  width: 100%; padding: 0.6rem;
+  background: rgba(88,101,242,0.08); border: 1px solid rgba(88,101,242,0.25);
+  border-radius: var(--radius-sm); color: #7289da;
+  font-size: 0.82rem; font-weight: 600; text-decoration: none;
+  transition: all 0.2s ease; font-family: var(--font-body); cursor: pointer;
+}
+.paymodal-discord-btn:hover { background: rgba(88,101,242,0.18); border-color: #7289da; }
+
+.paymodal-note {
+  font-size: 0.68rem; color: var(--text-muted);
+  text-align: center; margin-top: 0.6rem;
+  display: flex; align-items: center; justify-content: center; gap: 4px;
+}
+.paymodal-note i { color: var(--accent-3); font-size: 0.7rem; }
+
+/* Success state */
+.paymodal-success { display: none; padding: 2rem 1.5rem; text-align: center; }
+.paymodal-success-icon {
+  width: 52px; height: 52px;
+  background: rgba(16,185,129,0.12); border: 1px solid rgba(16,185,129,0.3);
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 1rem; font-size: 1.3rem; color: #10b981;
+}
+.paymodal-success h3 { font-size: 1.1rem; margin-bottom: 0.4rem; }
+.paymodal-success p { font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 1.25rem; line-height: 1.6; }
+.paymodal-discord-cta {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 0.7rem 1.5rem; background: #5865F2;
+  color: #fff; border-radius: var(--radius-sm);
+  font-weight: 600; font-size: 0.88rem; text-decoration: none;
+  transition: all 0.2s ease;
+}
+.paymodal-discord-cta:hover { background: #4752c4; transform: translateY(-2px); }
+    </style>
 </head>
 <body>
 
@@ -22,13 +512,13 @@
             </a>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#roblox">Roblox</a></li>
-        <li><a href="#webdev">Web Dev</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#pricing">Pricing</a></li>
-        <li><a href="#why-me">Why Me</a></li>
-        <li><a href="#contact" class="btn-nav">Contact</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#roblox">Roblox</a></li>
+                <li><a href="#webdev">Web Dev</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#why-me">Why Me</a></li>
+                <li><a href="#contact" class="btn-nav">Contact</a></li>
             </ul>
             <div class="hamburger" id="hamburger">
                 <i class="fas fa-bars"></i>
@@ -42,7 +532,6 @@
         <div class="hero-orb hero-orb-1"></div>
         <div class="hero-orb hero-orb-2"></div>
         <div class="hero-orb hero-orb-3"></div>
-
         <div class="hero-content">
             <div class="hero-badge">
                 <span class="pulse-dot"></span>
@@ -57,7 +546,6 @@
                 <a href="#contact" class="btn btn-secondary"><i class="fas fa-paper-plane"></i> Contact Me</a>
             </div>
         </div>
-
         <div class="scroll-indicator">
             <div class="mouse"></div>
             <span>Scroll</span>
@@ -75,9 +563,6 @@
             </div>
         </div>
     </section>
-
-
-
 
     <section id="roblox" class="section alt-bg">
         <div class="container">
@@ -129,12 +614,10 @@
                     <p>Professional online portfolios to help developers and artists display their best work.</p>
                 </div>
                 <div class="card reveal">
-
                     <h3>Simple HTML/CSS/JS</h3>
                     <p>Fast, lightweight, and fully responsive static websites without the bloat of frameworks.</p>
                 </div>
                 <div class="card reveal">
-
                     <h3>UI/UX Design</h3>
                     <p>Modern, user-centric interface design ensuring a seamless experience across all devices.</p>
                 </div>
@@ -144,7 +627,6 @@
 
     <section id="projects" class="section alt-bg">
         <div class="container">
-
             <div class="projects-eyebrow reveal" style="text-align:center;margin-bottom:2.5rem">
                 <div style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.4rem 1rem;background:rgba(99,102,241,0.07);border:1px solid rgba(99,102,241,0.2);border-radius:50px;font-size:0.78rem;color:var(--accent-3);letter-spacing:0.08em;text-transform:uppercase;font-weight:600;margin-bottom:1.2rem">
                     ✦ Portfolio Showcase
@@ -162,21 +644,17 @@
 
             <div class="projects-grid-new stagger-children" id="projectsGrid">
 
-                <!-- Project 1: Valor Gaming Theme -->
                 <div class="proj-card-new featured reveal" data-cat="landing">
                     <div class="proj-thumb gaming-thumb">
                         <div class="mockup-frame-wrap">
                             <div class="mockup-bar-top">
-                                <div class="dot r"></div>
-                                <div class="dot y"></div>
-                                <div class="dot g"></div>
+                                <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
                                 <div class="mockup-url"></div>
                             </div>
                             <div class="iframe-scaler">
                                 <iframe src="landing2/index.html" scrolling="no" tabindex="-1"></iframe>
                             </div>
                         </div>
-                        
                     </div>
                     <div class="proj-body-new">
                         <div class="proj-meta">Client Project · Landing Page</div>
@@ -185,7 +663,7 @@
                             <span class="ptag css">CSS</span>
                             <span class="ptag js">JS</span>
                         </div>
-                        <h3 class="proj-title-new"><img src="assets/valor_logo.png" alt="Valor Logo" style="height: 20px; width: 20px; border-radius: 4px; vertical-align: middle; margin-right: 8px; border: 1px solid rgba(255,255,255,0.1)">Landing Page #1 – Gaming Theme</h3>
+                        <h3 class="proj-title-new"><img src="assets/valor_logo.png" alt="Valor Logo" style="height:20px;width:20px;border-radius:4px;vertical-align:middle;margin-right:8px;border:1px solid rgba(255,255,255,0.1)">Landing Page #1 – Gaming Theme</h3>
                         <p class="proj-desc-new">Immersive high-converting promotional website built for a multiplayer battle arena game.</p>
                         <div class="proj-divider"></div>
                         <div class="proj-actions-new">
@@ -194,21 +672,17 @@
                     </div>
                 </div>
 
-                <!-- Project 2: Elevate SaaS Theme -->
                 <div class="proj-card-new featured reveal" data-cat="landing">
                     <div class="proj-thumb saas-thumb">
                         <div class="mockup-frame-wrap">
                             <div class="mockup-bar-top">
-                                <div class="dot r"></div>
-                                <div class="dot y"></div>
-                                <div class="dot g"></div>
+                                <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
                                 <div class="mockup-url"></div>
                             </div>
                             <div class="iframe-scaler">
                                 <iframe src="landing1/index.html" scrolling="no" tabindex="-1"></iframe>
                             </div>
                         </div>
-                        
                     </div>
                     <div class="proj-body-new">
                         <div class="proj-meta">Client Project · Landing Page</div>
@@ -217,7 +691,7 @@
                             <span class="ptag css">CSS</span>
                             <span class="ptag js">JS</span>
                         </div>
-                        <h3 class="proj-title-new"><img src="assets/elevate_logo.png" alt="Elevate Logo" style="height: 20px; width: 20px; border-radius: 4px; vertical-align: middle; margin-right: 8px; border: 1px solid rgba(255,255,255,0.1)">Landing Page #2 – Modern SaaS Style</h3>
+                        <h3 class="proj-title-new"><img src="assets/elevate_logo.png" alt="Elevate Logo" style="height:20px;width:20px;border-radius:4px;vertical-align:middle;margin-right:8px;border:1px solid rgba(255,255,255,0.1)">Landing Page #2 – Modern SaaS Style</h3>
                         <p class="proj-desc-new">High-end corporate agency presentation page designed to capture inbound enterprise leads.</p>
                         <div class="proj-divider"></div>
                         <div class="proj-actions-new">
@@ -226,14 +700,11 @@
                     </div>
                 </div>
 
-                <!-- Project 3: Discord Server Site -->
                 <div class="proj-card-new reveal" data-cat="landing">
                     <div class="proj-thumb discord-thumb">
                         <div class="mockup-frame-wrap">
                             <div class="mockup-bar-top">
-                                <div class="dot r"></div>
-                                <div class="dot y"></div>
-                                <div class="dot g"></div>
+                                <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
                                 <div class="mockup-url"></div>
                             </div>
                             <div class="iframe-scaler">
@@ -248,7 +719,7 @@
                             <span class="ptag css">CSS</span>
                             <span class="ptag discord-tag">Discord</span>
                         </div>
-                        <h3 class="proj-title-new"><img src="assets/discord_logo.png" alt="Discord Logo" style="height: 20px; width: 20px; border-radius: 4px; vertical-align: middle; margin-right: 8px; border: 1px solid rgba(255,255,255,0.1)">Inbo Dev Hub Landing Page</h3>
+                        <h3 class="proj-title-new"><img src="assets/discord_logo.png" alt="Discord Logo" style="height:20px;width:20px;border-radius:4px;vertical-align:middle;margin-right:8px;border:1px solid rgba(255,255,255,0.1)">Inbo Dev Hub Landing Page</h3>
                         <p class="proj-desc-new">Interactive landing page featuring real-time server statistics and automated discord link sync.</p>
                         <div class="proj-divider"></div>
                         <div class="proj-actions-new">
@@ -257,14 +728,11 @@
                     </div>
                 </div>
 
-                <!-- Project 4: Nova Task Manager -->
                 <div class="proj-card-new reveal" data-cat="ui-apps">
                     <div class="proj-thumb html-thumb">
                         <div class="mockup-frame-wrap">
                             <div class="mockup-bar-top">
-                                <div class="dot r"></div>
-                                <div class="dot y"></div>
-                                <div class="dot g"></div>
+                                <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
                                 <div class="mockup-url"></div>
                             </div>
                             <div class="iframe-scaler">
@@ -279,7 +747,7 @@
                             <span class="ptag css">CSS</span>
                             <span class="ptag js">JS</span>
                         </div>
-                        <h3 class="proj-title-new"><img src="assets/nova_logo.png" alt="Nova Logo" style="height: 20px; width: 20px; border-radius: 4px; vertical-align: middle; margin-right: 8px; border: 1px solid rgba(255,255,255,0.1)">Nova Task Manager Promo</h3>
+                        <h3 class="proj-title-new"><img src="assets/nova_logo.png" alt="Nova Logo" style="height:20px;width:20px;border-radius:4px;vertical-align:middle;margin-right:8px;border:1px solid rgba(255,255,255,0.1)">Nova Task Manager Promo</h3>
                         <p class="proj-desc-new">Modern, keyboard-driven productivity utility with real-time UI/UX task list states.</p>
                         <div class="proj-divider"></div>
                         <div class="proj-actions-new">
@@ -288,14 +756,11 @@
                     </div>
                 </div>
 
-                <!-- Project 5: Nexus UI Dashboard -->
                 <div class="proj-card-new reveal" data-cat="ui-apps">
                     <div class="proj-thumb uiux-thumb">
                         <div class="mockup-frame-wrap">
                             <div class="mockup-bar-top">
-                                <div class="dot r"></div>
-                                <div class="dot y"></div>
-                                <div class="dot g"></div>
+                                <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
                                 <div class="mockup-url"></div>
                             </div>
                             <div class="iframe-scaler">
@@ -310,7 +775,7 @@
                             <span class="ptag css">CSS</span>
                             <span class="ptag js">JS</span>
                         </div>
-                        <h3 class="proj-title-new"><img src="assets/nexus_dash_logo.png" alt="Nexus Logo" style="height: 20px; width: 20px; border-radius: 4px; vertical-align: middle; margin-right: 8px; border: 1px solid rgba(255,255,255,0.1)">Nexus Analytics Dashboard</h3>
+                        <h3 class="proj-title-new"><img src="assets/nexus_dash_logo.png" alt="Nexus Logo" style="height:20px;width:20px;border-radius:4px;vertical-align:middle;margin-right:8px;border:1px solid rgba(255,255,255,0.1)">Nexus Analytics Dashboard</h3>
                         <p class="proj-desc-new">Creative dark-mode analytics console showcasing real-time responsive visualization metrics.</p>
                         <div class="proj-divider"></div>
                         <div class="proj-actions-new">
@@ -319,21 +784,17 @@
                     </div>
                 </div>
 
-                <!-- Project 6: Roblox Developer Portfolio -->
                 <div class="proj-card-new reveal" data-cat="other-sites">
                     <div class="proj-thumb roblox-thumb">
                         <div class="mockup-frame-wrap">
                             <div class="mockup-bar-top">
-                                <div class="dot r"></div>
-                                <div class="dot y"></div>
-                                <div class="dot g"></div>
+                                <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
                                 <div class="mockup-url"></div>
                             </div>
                             <div class="iframe-scaler">
                                 <iframe src="https://saba-dach.github.io/Portfolio/" scrolling="no" tabindex="-1"></iframe>
                             </div>
                         </div>
-
                     </div>
                     <div class="proj-body-new">
                         <div class="proj-meta">Portfolio · Roblox Dev</div>
@@ -342,12 +803,11 @@
                             <span class="ptag css">CSS</span>
                             <span class="ptag js">JS</span>
                         </div>
-                        <h3 class="proj-title-new"><img src="assets/portfolio_logo.png" alt="Dev Logo" style="height: 20px; width: 20px; border-radius: 4px; vertical-align: middle; margin-right: 8px; border: 1px solid rgba(255,255,255,0.1)">Roblox Developer Portfolio</h3>
+                        <h3 class="proj-title-new"><img src="assets/portfolio_logo.png" alt="Dev Logo" style="height:20px;width:20px;border-radius:4px;vertical-align:middle;margin-right:8px;border:1px solid rgba(255,255,255,0.1)">Roblox Developer Portfolio</h3>
                         <p class="proj-desc-new">Full interactive developer portfolio highlighting game combat systems and Lua scripts.</p>
                         <div class="proj-divider"></div>
                         <div class="proj-actions-new">
                             <a href="https://saba-dach.github.io/Portfolio/" target="_blank" class="btn-demo">↗ Live Demo</a>
-
                         </div>
                     </div>
                 </div>
@@ -376,7 +836,7 @@
                         <li><i class="fas fa-check"></i> Quick turnaround</li>
                         <li><i class="fas fa-check"></i> Minor adjustments</li>
                     </ul>
-                    <a href="#contact" class="btn btn-secondary btn-block price-cta">Get Started</a>
+                    <button onclick="openPayModal('bug-fix')" class="btn btn-secondary btn-block price-cta">Get Started</button>
                 </div>
 
                 <div class="price-card popular reveal">
@@ -393,7 +853,7 @@
                         <li><i class="fas fa-check"></i> Combat / inventory</li>
                         <li><i class="fas fa-check"></i> Revisions included</li>
                     </ul>
-                    <a href="#contact" class="btn btn-primary btn-block price-cta">Get Started</a>
+                    <button onclick="openPayModal('small-system')" class="btn btn-primary btn-block price-cta">Get Started</button>
                 </div>
 
                 <div class="price-card reveal">
@@ -409,7 +869,7 @@
                         <li><i class="fas fa-check"></i> SEO friendly</li>
                         <li><i class="fas fa-check"></i> Fast delivery</li>
                     </ul>
-                    <a href="#contact" class="btn btn-secondary btn-block price-cta">Get Started</a>
+                    <button onclick="openPayModal('landing-page')" class="btn btn-secondary btn-block price-cta">Get Started</button>
                 </div>
 
                 <div class="price-card reveal">
@@ -426,7 +886,7 @@
                         <li><i class="fas fa-check"></i> Premium aesthetic</li>
                         <li><i class="fas fa-check"></i> Ongoing support</li>
                     </ul>
-                    <a href="#contact" class="btn btn-secondary btn-block price-cta">Get Started</a>
+                    <button onclick="openPayModal('full-website')" class="btn btn-secondary btn-block price-cta">Get Started</button>
                 </div>
 
             </div>
@@ -436,18 +896,19 @@
             </p>
         </div>
     </section>
-<section id="why-me" class="section alt-bg">
-    <div class="container">
-        <h2 class="section-title reveal">Why <span class="gradient-text">Me</span></h2>
-        <p class="section-subtitle reveal">What sets my services apart.</p>
-        <ul class="why-list reveal">
-    <li><i class="fas fa-check"></i> Clean modern design</li>
-    <li><i class="fas fa-check"></i> Fast delivery</li>
-    <li><i class="fas fa-check"></i> Responsive design (mobile + desktop)</li>
-    <li><i class="fas fa-check"></i> Free revisions</li>
-</ul>
-    </div>
-</section>
+
+    <section id="why-me" class="section alt-bg">
+        <div class="container">
+            <h2 class="section-title reveal">Why <span class="gradient-text">Me</span></h2>
+            <p class="section-subtitle reveal">What sets my services apart.</p>
+            <ul class="why-list reveal">
+                <li><i class="fas fa-check"></i> Clean modern design</li>
+                <li><i class="fas fa-check"></i> Fast delivery</li>
+                <li><i class="fas fa-check"></i> Responsive design (mobile + desktop)</li>
+                <li><i class="fas fa-check"></i> Free revisions</li>
+            </ul>
+        </div>
+    </section>
 
     <section id="contact" class="section alt-bg">
         <div class="container">
@@ -498,6 +959,353 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <!-- Payment Modal -->
+    <div class="paymodal-overlay" id="paymodalOverlay">
+        <div class="paymodal" id="paymodal">
+            <div class="paymodal-header">
+                <button class="paymodal-close" id="paymodalClose">✕</button>
+                <h2>Complete Your Order</h2>
+                <p>Secure payment powered by PayPal</p>
+            </div>
+            <div class="paymodal-body" id="paymodalBody">
+                <div class="paymodal-steps">
+                    <div class="pms active" id="pms1"><span class="pms-dot">1</span> Details</div>
+                    <div class="pms" id="pms2"><span class="pms-dot">2</span> Pay</div>
+                    <div class="pms" id="pms3"><span class="pms-dot">3</span> Connect</div>
+                </div>
+                <div class="paymodal-service">
+                    <div class="paymodal-service-name" id="pmServiceName">Service</div>
+                    <div class="paymodal-service-desc" id="pmServiceDesc"></div>
+                    <div class="paymodal-price-row">
+                        <span class="paymodal-price-label" id="pmPriceLabel">Price</span>
+                        <span class="paymodal-price-val" id="pmPriceVal"></span>
+                    </div>
+                </div>
+                <div id="paypal-button-container" style="border-radius:8px;overflow:hidden;margin-bottom:0.75rem;"></div>
+                <div class="paymodal-divider"><span>or</span></div>
+                <a href="https://discord.com/users/1481990642174263462" target="_blank" class="paymodal-discord-btn">
+                    <i class="fab fa-discord"></i> Message me on Discord first
+                </a>
+                <p class="paymodal-note"><i class="fas fa-lock"></i> 50% upfront, 50% on delivery — or 100% upfront. You choose.</p>
+            </div>
+            <div class="paymodal-success" id="paymodalSuccess">
+                <div class="paymodal-success-icon"><i class="fas fa-check"></i></div>
+                <h3>Payment received!</h3>
+                <p>Thank you! DM me on Discord with your project details and we'll get started right away.</p>
+                <a href="https://discord.com/users/1481990642174263462" target="_blank" class="paymodal-discord-cta">
+                    <i class="fab fa-discord"></i> Open Discord DM
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- PayPal SDK (live) -->
+    <script src="https://www.paypal.com/sdk/js?client-id=ASX-dD32BAwPB4PPW-H6fvljvDqE2jrV_e5oqbxEdZEv3XRc9KKiVh5TnHsJiOHEF-O_063zgvj-7jTi&currency=USD"></script>
+
+    <script>
+document.addEventListener('DOMContentLoaded', () => {
+
+    // Project filters
+    const projFilters = document.querySelectorAll('.proj-filter');
+    const projCards   = document.querySelectorAll('.proj-card-new');
+    projFilters.forEach(btn => {
+        btn.addEventListener('click', () => {
+            projFilters.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const f = btn.dataset.filter;
+            projCards.forEach(c => {
+                const cats = c.dataset.cat.split(' ');
+                c.classList.toggle('hidden', f !== 'all' && !cats.includes(f));
+            });
+        });
+    });
+
+    // Particle canvas
+    const canvas = document.getElementById('particles-canvas');
+    if (canvas) {
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        let animationId;
+        let mouse = { x: null, y: null };
+
+        function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+        canvas.addEventListener('mousemove', (e) => { mouse.x = e.clientX; mouse.y = e.clientY; });
+        canvas.addEventListener('mouseleave', () => { mouse.x = null; mouse.y = null; });
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 0.5;
+                this.speedX = (Math.random() - 0.5) * 0.4;
+                this.speedY = (Math.random() - 0.5) * 0.4;
+                this.opacity = Math.random() * 0.5 + 0.1;
+                this.color = ['rgba(99,102,241,', 'rgba(139,92,246,', 'rgba(6,182,212,'][Math.floor(Math.random() * 3)];
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (mouse.x !== null && mouse.y !== null) {
+                    const dx = mouse.x - this.x;
+                    const dy = mouse.y - this.y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < 120) { const force = (120 - dist) / 120; this.x -= (dx / dist) * force * 1.5; this.y -= (dy / dist) * force * 1.5; }
+                }
+                if (this.x < 0) this.x = canvas.width;
+                if (this.x > canvas.width) this.x = 0;
+                if (this.y < 0) this.y = canvas.height;
+                if (this.y > canvas.height) this.y = 0;
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = this.color + this.opacity + ')';
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particles = [];
+            const count = Math.min(80, Math.floor((canvas.width * canvas.height) / 15000));
+            for (let i = 0; i < count; i++) particles.push(new Particle());
+        }
+
+        function drawLines() {
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < 150) {
+                        const opacity = (1 - dist / 150) * 0.12;
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.strokeStyle = `rgba(99, 102, 241, ${opacity})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => { p.update(); p.draw(); });
+            drawLines();
+            animationId = requestAnimationFrame(animateParticles);
+        }
+
+        initParticles();
+        animateParticles();
+
+        const heroSection = document.getElementById('home');
+        const particleObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) { cancelAnimationFrame(animationId); } else { animateParticles(); }
+            });
+        }, { threshold: 0.1 });
+        if (heroSection) particleObserver.observe(heroSection);
+    }
+
+    // Typewriter
+    const heroSubtitle = document.getElementById('heroSubtitle');
+    if (heroSubtitle) {
+        const phrases = [
+            "I build clean, scalable gameplay systems.",
+            "I create modern websites & landing pages.",
+            "I design sleek UI/UX for games & web.",
+            "Available for commissions — let's build."
+        ];
+        let phraseIndex = 0, charIndex = 0, isDeleting = false, typingSpeed = 50;
+        function typeWriter() {
+            const currentPhrase = phrases[phraseIndex];
+            if (isDeleting) { heroSubtitle.textContent = currentPhrase.substring(0, charIndex - 1); charIndex--; typingSpeed = 25; }
+            else { heroSubtitle.textContent = currentPhrase.substring(0, charIndex + 1); charIndex++; typingSpeed = 55; }
+            if (!heroSubtitle.querySelector('.typewriter-cursor')) {
+                const cursor = document.createElement('span');
+                cursor.className = 'typewriter-cursor';
+                heroSubtitle.appendChild(cursor);
+            }
+            if (!isDeleting && charIndex === currentPhrase.length) { typingSpeed = 2500; isDeleting = true; }
+            else if (isDeleting && charIndex === 0) { isDeleting = false; phraseIndex = (phraseIndex + 1) % phrases.length; typingSpeed = 400; }
+            setTimeout(typeWriter, typingSpeed);
+        }
+        setTimeout(typeWriter, 1200);
+    }
+
+    // Scroll reveal
+    const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('revealed'); revealObserver.unobserve(entry.target); } });
+    }, { root: null, rootMargin: '0px 0px -60px 0px', threshold: 0.1 });
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    // Navbar scroll
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 80) { navbar.classList.add('scrolled'); } else { navbar.classList.remove('scrolled'); }
+    }, { passive: true });
+
+    // Hamburger
+    const hamburger = document.getElementById('hamburger');
+    const navLinks  = document.getElementById('navLinks');
+    if (hamburger && navLinks) {
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = hamburger.querySelector('i');
+            if (navLinks.classList.contains('active')) { icon.classList.remove('fa-bars'); icon.classList.add('fa-times'); }
+            else { icon.classList.remove('fa-times'); icon.classList.add('fa-bars'); }
+        });
+    }
+    document.querySelectorAll('#navLinks a').forEach(link => {
+        link.addEventListener('click', () => {
+            if (navLinks && navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+                const icon = hamburger.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+    });
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) { window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' }); }
+        });
+    });
+
+    // Active nav highlight
+    const sections = document.querySelectorAll('section[id]');
+    const navItems = document.querySelectorAll('#navLinks a[href^="#"]');
+    const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+                navItems.forEach(item => {
+                    item.style.color = '';
+                    if (item.getAttribute('href') === `#${id}`) item.style.color = 'var(--accent-3)';
+                });
+            }
+        });
+    }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
+    sections.forEach(section => sectionObserver.observe(section));
+
+    // Contact form
+    const contactForm = document.getElementById('contactForm');
+    const formMessage = document.getElementById('formMessage');
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            submitBtn.disabled = true;
+            fetch(contactForm.action, { method: 'POST', body: new FormData(contactForm) })
+                .then(res => {
+                    if (res.ok) { formMessage.innerHTML = '<span style="color:#10b981;"><i class="fas fa-check-circle"></i> Message sent! I\'ll get back to you soon.</span>'; contactForm.reset(); }
+                    else { formMessage.innerHTML = '<span style="color:#ef4444;"><i class="fas fa-exclamation-circle"></i> Something went wrong. DM me on Discord instead.</span>'; }
+                })
+                .catch(() => { formMessage.innerHTML = '<span style="color:#ef4444;"><i class="fas fa-exclamation-circle"></i> Error sending. DM me on Discord instead.</span>'; })
+                .finally(() => { submitBtn.innerHTML = originalText; submitBtn.disabled = false; });
+        });
+    }
+
+    // Card tilt effect
+    const cards = document.querySelectorAll('.card, .project-card, .price-card, .proj-card-new');
+    cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            card.style.setProperty('--mouse-x', `${x}px`);
+            card.style.setProperty('--mouse-y', `${y}px`);
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const rotateX = ((y - centerY) / centerY) * -3;
+            const rotateY = ((x - centerX) / centerX) * 3;
+            card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+        });
+        card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+    });
+
+});
+
+// ── Payment Modal ────────────────────────────────────────────────
+const SERVICES = {
+    'bug-fix':      { name: 'Bug Fixes',     desc: 'Script diagnosis, quick turnaround, minor adjustments.',                   label: 'Starting at', price: '10.00',  display: '$10' },
+    'small-system': { name: 'Small Systems', desc: 'Custom mechanics, UI integration, combat/inventory — revisions included.',  label: '',            price: '20.00',  display: '$20 – $50' },
+    'landing-page': { name: 'Landing Page',  desc: 'Modern design, fully responsive, SEO friendly, fast delivery.',            label: '',            price: '40.00',  display: '$40 – $100' },
+    'full-website': { name: 'Full Website',  desc: 'Multiple pages, custom animations, premium aesthetic, ongoing support.',   label: 'Starting at', price: '150.00', display: '$150+' },
+};
+
+let currentService = null;
+let paypalRendered  = false;
+
+function openPayModal(serviceKey) {
+    const svc = SERVICES[serviceKey];
+    if (!svc) return;
+    currentService = svc;
+
+    document.getElementById('pmServiceName').textContent = svc.name;
+    document.getElementById('pmServiceDesc').textContent = svc.desc;
+    document.getElementById('pmPriceLabel').textContent  = svc.label;
+    document.getElementById('pmPriceVal').textContent    = svc.display;
+
+    document.getElementById('paymodalBody').style.display    = 'block';
+    document.getElementById('paymodalSuccess').style.display = 'none';
+    document.getElementById('pms1').className = 'pms active';
+    document.getElementById('pms2').className = 'pms';
+    document.getElementById('pms3').className = 'pms';
+
+    document.getElementById('paymodalOverlay').classList.add('active');
+    document.body.style.overflow = 'hidden';
+
+    if (!paypalRendered) { renderPayPalButton(); paypalRendered = true; }
+}
+
+function closePayModal() {
+    document.getElementById('paymodalOverlay').classList.remove('active');
+    document.body.style.overflow = '';
+    paypalRendered = false;
+    document.getElementById('paypal-button-container').innerHTML = '';
+}
+
+function renderPayPalButton() {
+    paypal.Buttons({
+        style: { layout: 'vertical', color: 'gold', shape: 'rect', label: 'pay', height: 45 },
+        createOrder(data, actions) {
+            document.getElementById('pms1').className = 'pms done';
+            document.getElementById('pms2').className = 'pms active';
+            return actions.order.create({
+                purchase_units: [{ description: currentService.name + ' — inbodev.netlify.app', amount: { value: currentService.price } }]
+            });
+        },
+        onApprove(data, actions) {
+            return actions.order.capture().then(() => {
+                document.getElementById('pms2').className = 'pms done';
+                document.getElementById('pms3').className = 'pms active';
+                document.getElementById('paymodalBody').style.display    = 'none';
+                document.getElementById('paymodalSuccess').style.display = 'block';
+            });
+        },
+        onError(err) {
+            console.error('PayPal error:', err);
+            alert('Something went wrong with PayPal. DM me on Discord instead!');
+        }
+    }).render('#paypal-button-container');
+}
+
+document.getElementById('paymodalClose').addEventListener('click', closePayModal);
+document.getElementById('paymodalOverlay').addEventListener('click', (e) => {
+    if (e.target === document.getElementById('paymodalOverlay')) closePayModal();
+});
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closePayModal(); });
+    </script>
 </body>
 </html>

@@ -334,3 +334,85 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 });
+
+
+// ── Payment Modal ──────────────────────────────────────────
+const SERVICES = {
+    'bug-fix':      { name: 'Bug Fixes',     desc: 'Script diagnosis, quick turnaround, minor adjustments.',             label: 'Starting at', price: '10.00',  display: '$10' },
+    'small-system': { name: 'Small Systems', desc: 'Custom mechanics, UI integration, combat/inventory — revisions included.', label: '',           price: '20.00',  display: '$20 – $50' },
+    'landing-page': { name: 'Landing Page',  desc: 'Modern design, fully responsive, SEO friendly, fast delivery.',      label: '',           price: '40.00',  display: '$40 – $100' },
+    'full-website': { name: 'Full Website',  desc: 'Multiple pages, custom animations, premium aesthetic, ongoing support.', label: 'Starting at', price: '150.00', display: '$150+' },
+};
+
+let currentService = null;
+let paypalRendered = false;
+
+function openPayModal(serviceKey) {
+    const svc = SERVICES[serviceKey];
+    if (!svc) return;
+    currentService = svc;
+
+    document.getElementById('pmServiceName').textContent  = svc.name;
+    document.getElementById('pmServiceDesc').textContent  = svc.desc;
+    document.getElementById('pmPriceLabel').textContent   = svc.label;
+    document.getElementById('pmPriceVal').textContent     = svc.display;
+
+    document.getElementById('paymodalBody').style.display    = 'block';
+    document.getElementById('paymodalSuccess').style.display = 'none';
+    document.getElementById('pms1').className = 'pms active';
+    document.getElementById('pms2').className = 'pms';
+    document.getElementById('pms3').className = 'pms';
+
+    document.getElementById('paymodalOverlay').classList.add('active');
+    document.body.style.overflow = 'hidden';
+
+    if (!paypalRendered) {
+        renderPayPalButton();
+        paypalRendered = true;
+    }
+}
+
+function closePayModal() {
+    document.getElementById('paymodalOverlay').classList.remove('active');
+    document.body.style.overflow = '';
+    paypalRendered = false;
+    document.getElementById('paypal-button-container').innerHTML = '';
+}
+
+function renderPayPalButton() {
+    paypal.Buttons({
+        style: { layout: 'vertical', color: 'gold', shape: 'rect', label: 'pay', height: 45 },
+
+        createOrder(data, actions) {
+            document.getElementById('pms1').className = 'pms done';
+            document.getElementById('pms2').className = 'pms active';
+            return actions.order.create({
+                purchase_units: [{
+                    description: currentService.name + ' — inbodev.netlify.app',
+                    amount: { value: currentService.price }
+                }]
+            });
+        },
+
+        onApprove(data, actions) {
+            return actions.order.capture().then(() => {
+                document.getElementById('pms2').className = 'pms done';
+                document.getElementById('pms3').className = 'pms active';
+                document.getElementById('paymodalBody').style.display    = 'none';
+                document.getElementById('paymodalSuccess').style.display = 'block';
+            });
+        },
+
+        onError(err) {
+            console.error('PayPal error:', err);
+            alert('Something went wrong with PayPal. DM me on Discord instead!');
+        }
+    }).render('#paypal-button-container');
+}
+
+// Close on overlay click or X button
+document.getElementById('paymodalClose').addEventListener('click', closePayModal);
+document.getElementById('paymodalOverlay').addEventListener('click', (e) => {
+    if (e.target === document.getElementById('paymodalOverlay')) closePayModal();
+});
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closePayModal(); });
